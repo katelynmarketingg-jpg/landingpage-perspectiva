@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Perspectiva — Agência de Marketing</title>
+<meta name="description" content="O marketing como você nunca viu. Estratégia e posicionamento para que sua marca seja vista como realmente é, reconhecida pelo que entrega e lembrada quando importa." />
+<meta property="og:title" content="Perspectiva — Agência de Marketing" />
+<meta property="og:description" content="Num mundo de visões iguais, qual é a sua? Estratégia, posicionamento e conteúdo para marcas que querem ser lembradas." />
+<meta property="og:type" content="website" />
+<meta name="theme-color" content="#0A0A0A" />
+<link rel="icon" href="images/logo.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,900&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --ink:#0A0A0A; --ink-soft:#0E0C0B; --ink-mid:#15110E;
+    --paper:#F2EEE9; --paper-2:#E7E0D8;
+    --flame:#FF7A00; --flame-soft:#FF9A3D; --flame-hot:#FF5A1F; --flame-deep:#E8500E;
+    --line:rgba(255,255,255,.08); --maxw:1200px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--ink);color:var(--paper);font-family:Montserrat,system-ui,sans-serif;font-weight:300;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img,svg{display:block;max-width:100%}
+  section[id],[id]{scroll-margin-top:80px}
+  ::selection{background:rgba(255,90,31,.28);color:#fff}
+  ::-webkit-scrollbar{width:5px}
+  ::-webkit-scrollbar-track{background:#0A0A0A}
+  ::-webkit-scrollbar-thumb{background:var(--flame-hot);border-radius:3px}
+
+  /* ---- helpers ---- */
+  .container{max-width:var(--maxw);margin:0 auto;padding:0 22px;position:relative;z-index:2}
+  @media(min-width:1024px){.container{padding:0 48px}}
+  .section{padding:90px 0;position:relative;overflow:hidden}
+  @media(min-width:1024px){.section{padding:128px 0}}
+  .label{font-size:9px;font-weight:700;letter-spacing:.42em;text-transform:uppercase}
+  .label-sm{font-size:7.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase}
+  .flame{color:var(--flame)}
+  .rule{display:inline-block;width:34px;height:1px;background:var(--flame);flex-shrink:0}
+  .eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+  .eyebrow .label{color:rgba(255,255,255,.5)}
+  .h-sec{font-weight:900;text-transform:uppercase;letter-spacing:-.012em;line-height:.96;font-size:clamp(2rem,4.6vw,3.6rem)}
+  .lead{font-weight:300;color:rgba(255,255,255,.55);font-size:clamp(1rem,1.4vw,1.12rem);line-height:1.6}
+  .disclaimer{font-size:7.5px;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.22);margin-top:18px}
+  .serif{font-family:"Playfair Display",Georgia,serif}
+
+  /* glows */
+  .glow{position:absolute;border-radius:50%;pointer-events:none;z-index:0;filter:blur(40px);
+    background:radial-gradient(circle,rgba(255,90,31,.4),rgba(255,90,31,.1) 42%,transparent 70%)}
+  .glow--soft{filter:blur(60px);background:radial-gradient(circle,rgba(255,122,0,.22),transparent 66%)}
+  .grid-lines{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:64px 64px;pointer-events:none;z-index:1}
+  .noise{position:absolute;inset:0;opacity:.05;mix-blend-mode:overlay;pointer-events:none;z-index:1;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-size:170px}
+
+  /* ---- INFINITE BACKGROUND (desliza devagar no scroll) ---- */
+  .site-bg{position:fixed;inset:0;z-index:-1;overflow:hidden;background:#0a0a0a;pointer-events:none}
+  .site-bg__i{position:absolute;top:-22%;left:-6%;width:112%;height:150%;background:#0a0a0a url('images/bg-infinite.jpg') center/cover no-repeat;will-change:transform}
+  .site-bg__v{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,10,10,.5),rgba(12,9,7,.62))}
+  /* seções escuras viram transparentes p/ revelar o fundo infinito */
+  .cases,.cta{background:transparent!important}
+  .site-footer{background:rgba(8,8,8,.5)!important}
+  #servicos,#expertise,#quem-somos,#equipe,#onde-estamos{background:transparent!important}
+
+  /* ============ COLOR-BLOCK SYSTEM ============ */
+  .s-off{background:var(--paper);color:#15110E}
+  .s-off .eyebrow .label,.s-off .label{color:rgba(10,10,10,.5)}
+  .s-off .rule{background:var(--flame-deep)}
+  .s-off .lead{color:rgba(10,10,10,.6)}
+  .s-orange{background:var(--flame);color:#1a0d00}
+  .s-orange .label{color:rgba(20,10,0,.72)}
+  .s-orange .rule{background:#0A0A0A}
+
+  /* ---- buttons ---- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:11px;font-size:9.5px;font-weight:800;letter-spacing:.18em;text-transform:uppercase;padding:16px 28px;transition:all .3s;cursor:pointer;border:none;white-space:nowrap}
+  .btn svg{width:15px;height:15px;transition:transform .3s}
+  .btn--flame{background:var(--flame);color:#1a0d00}
+  .btn--flame:hover{background:var(--flame-hot);box-shadow:0 16px 40px -10px rgba(255,90,31,.55)}
+  .btn--flame:hover svg{transform:translateX(4px)}
+  .btn--ghost{border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.8)}
+  .btn--ghost:hover{border-color:var(--flame);color:#fff}
+  .btn--wa{background:var(--flame-deep);color:#fff}
+  .btn--wa:hover{background:var(--flame-hot)}
+  .btn--sm{padding:11px 18px;font-size:9px}
+  .btn--lg{padding:19px 38px;font-size:11px}
+
+  /* ---- header ---- */
+  .site-header{position:fixed;top:0;left:0;right:0;z-index:60;transition:all .45s}
+  .site-header.scrolled{background:rgba(8,8,8,.86);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+  .hwrap{max-width:1320px;margin:0 auto;padding:0 20px;height:72px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  @media(min-width:1024px){.hwrap{padding:0 40px}}
+  .brand{display:flex;align-items:center;gap:11px;flex-shrink:0}
+  .brand img{width:42px;height:42px;border-radius:50%;flex-shrink:0}
+  .brand__txt{display:none;flex-direction:column;line-height:1}
+  @media(min-width:560px){.brand__txt{display:flex}}
+  .brand__name{font-family:"Playfair Display",serif;font-weight:700;color:#fff;font-size:19px;letter-spacing:.01em}
+  .brand__sub{font-weight:600;color:var(--flame);font-size:6.5px;letter-spacing:.32em;text-transform:uppercase;margin-top:2px}
+  .nav{display:none;align-items:center;gap:26px}
+  @media(min-width:1024px){.nav{display:flex}}
+  .nav a{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.7);transition:color .2s}
+  .nav a:hover{color:var(--flame)}
+  .actions{display:flex;align-items:center;gap:9px}
+  .icon-btn{width:38px;height:38px;display:none;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.65);transition:all .3s}
+  @media(min-width:560px){.icon-btn{display:flex}}
+  .icon-btn:hover{border-color:var(--flame);color:var(--flame)}
+  .icon-btn svg{width:17px;height:17px}
+  .burger{display:flex;flex-direction:column;align-items:flex-end;justify-content:center;gap:5px;width:38px;height:38px;background:none;border:none;cursor:pointer}
+  @media(min-width:1024px){.burger{display:none}}
+  .burger span{display:block;height:2px;background:#fff;transition:all .3s;border-radius:2px}
+  .burger span:nth-child(1){width:22px}.burger span:nth-child(2){width:14px}.burger span:nth-child(3){width:22px}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-nav{display:flex;flex-direction:column;overflow:hidden;max-height:0;background:rgba(8,8,8,.98);backdrop-filter:blur(18px);border-top:1px solid var(--line);transition:max-height .35s ease}
+  @media(min-width:1024px){.mobile-nav{display:none}}
+  .mobile-nav__in{padding:10px 22px 26px;display:flex;flex-direction:column}
+  .mobile-nav a:not(.btn){font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.72);padding:15px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+  .mobile-nav .btn{margin-top:20px}
+
+  /* ---- HERO ---- */
+  .hero{position:relative;min-height:100dvh;display:flex;align-items:center;overflow:hidden;background:#0A0A0A}
+  .hero__bg{position:absolute;inset:0;z-index:0;background:#050505 url('images/hero-bg.jpg') center/100% 100% no-repeat}
+  .hero__in{position:relative;z-index:3;width:100%;padding-top:130px;padding-bottom:90px}
+  @media(min-width:1024px){.hero__in{padding-top:120px;padding-bottom:120px}}
+  .hero__kicker{font-weight:600;color:#fff;font-size:clamp(11px,1.3vw,13px);letter-spacing:.26em;text-transform:uppercase;margin-bottom:22px;opacity:.92}
+  .hero h1{font-weight:900;text-transform:uppercase;line-height:.93;letter-spacing:-.022em;font-size:clamp(2.7rem,7.6vw,6rem);margin-bottom:28px;text-shadow:0 4px 40px rgba(0,0,0,.35)}
+  .hero h1 .o{color:var(--flame);text-shadow:0 4px 30px rgba(255,122,0,.35)}
+  .hero__sub{font-weight:400;font-style:italic;color:rgba(255,255,255,.85);font-size:clamp(1rem,1.5vw,1.18rem);line-height:1.55;max-width:520px;margin-bottom:36px}
+  .hero__sub b{font-weight:700;font-style:normal}
+  .hero__cta{display:flex;flex-direction:column;gap:14px}
+  @media(min-width:520px){.hero__cta{flex-direction:row}}
+  .scrollcue{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:3;display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.6)}
+  .scrollcue span{font-size:7px;font-weight:700;letter-spacing:.3em;text-transform:uppercase}
+  .scrollcue i{width:1px;height:34px;background:linear-gradient(to bottom,#fff,transparent);animation:cue 1.9s ease-in-out infinite}
+
+  /* ---- HERO: mundo laranja — vista orbital + abertura cinematográfica ---- */
+  .hero{background:radial-gradient(155% 92% at 50% 104%, #50200a 0%, #24110a 32%, #0d0705 66%, #060403 100%)}
+  .hero__stars{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;animation:starsIn 2.4s 1.2s both}
+  .hero__star{position:absolute;border-radius:50%;background:#fff;opacity:.4;animation:twinkle linear infinite}
+  .hero__world{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+  .hero__world-in{position:absolute;inset:0;transform-origin:50% 86%;animation:worldReveal 3.6s cubic-bezier(.16,.72,.24,1) both}
+  .hero__planet{position:absolute;left:50%;top:67vh;width:max(560vw,1700px);aspect-ratio:1;border-radius:50%;transform:translateX(-50%);
+    background:radial-gradient(circle at 50% 11%, #74290a 0%, #401607 19%, #1c0d06 39%, #0c0604 57%);box-shadow:inset 0 14px 60px rgba(255,120,30,.16)}
+  .hero__atmo{position:absolute;left:50%;top:58vh;transform:translateX(-50%);width:175vw;height:32vh;background:radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,150,48,.82), rgba(255,90,18,.3) 44%, transparent 72%);filter:blur(32px);mix-blend-mode:screen}
+  .hero__rim{position:absolute;left:50%;top:66.2vh;transform:translateX(-50%);width:158vw;height:8vh;background:radial-gradient(ellipse 50% 50% at 50% 50%, rgba(255,214,158,.92), rgba(255,120,32,.5) 34%, transparent 64%);filter:blur(9px);mix-blend-mode:screen}
+  .hero__cities{position:absolute;left:0;right:0;top:67vh;bottom:0;overflow:hidden;pointer-events:none;-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 52%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 52%,transparent 100%)}
+  .hero__city{position:absolute;border-radius:50%;background:#ff9a30;box-shadow:0 0 5px 1px rgba(255,140,40,.85);animation:twinkle linear infinite}
+  @keyframes worldReveal{0%{transform:scale(1.55)}60%{transform:scale(1.14)}100%{transform:scale(1.05)}}
+  @keyframes starsIn{from{opacity:0}to{opacity:1}}
+  @keyframes twinkle{0%,100%{opacity:.12}50%{opacity:.82}}
+  @media(max-width:820px){.hero__planet{top:75vh}.hero__atmo{top:66vh;height:24vh}.hero__rim{top:74.2vh}}
+
+  /* ---- MARQUEE ---- */
+  .marquee{background:var(--flame);color:#1a0d00;padding:17px 0;overflow:hidden;width:120vw;margin:-22px -10vw;transform:rotate(-1deg);position:relative;z-index:5}
+  .marquee__t{display:flex;width:max-content;animation:marquee 28s linear infinite}
+  .marquee__g{display:flex;align-items:center}
+  .marquee__i{padding:0 20px;font-size:10px;font-weight:800;letter-spacing:.34em;text-transform:uppercase}
+  .marquee__s{font-size:9px;opacity:.6}
+
+  /* ---- MANIFESTO ---- */
+  .manifesto{text-align:center}
+  .manifesto .eyebrow{justify-content:center}
+  .manifesto h2{font-weight:900;text-transform:uppercase;line-height:1.0;letter-spacing:-.01em;font-size:clamp(1.9rem,5.4vw,3.9rem)}
+  .manifesto .l1{color:#0A0A0A}
+  .manifesto .l2{color:rgba(10,10,10,.26)}
+  .manifesto p{max-width:46rem;margin:32px auto 0;font-weight:400;color:rgba(10,10,10,.62);font-size:clamp(1.02rem,1.5vw,1.18rem);line-height:1.65}
+  .manifesto p b{color:#0A0A0A;font-weight:700}
+
+  /* ---- section head ---- */
+  .sec-head{margin-bottom:54px;max-width:640px}
+  .sec-head .h-sec{margin-bottom:18px}
+
+  /* ---- cards (como atuamos) ---- */
+  .cards{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
+  @media(min-width:600px){.cards{grid-template-columns:1fr 1fr}}
+  @media(min-width:1024px){.cards{grid-template-columns:repeat(4,1fr)}}
+  .card{background:var(--ink);padding:34px 30px;transition:background .3s;min-height:300px}
+  .card:hover{background:#120d09}
+  .card__n{display:block;font-weight:900;color:var(--flame);font-size:.92rem;letter-spacing:.34em;margin-bottom:30px}
+  .card h3{font-weight:800;color:#fff;font-size:1.06rem;line-height:1.15;text-transform:uppercase;letter-spacing:.01em;margin-bottom:14px}
+  .card p{font-weight:300;color:rgba(255,255,255,.5);font-size:.9rem;line-height:1.6}
+
+  /* ---- CASES / phones ---- */
+  .cases{background:#0A0A0A}
+  .cases__bg{position:absolute;inset:0;z-index:0;background:#c2410a url('images/instagram-sky.jpg') center/cover no-repeat}
+  .cases__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,122,0,.4),rgba(150,48,4,.72))}
+  .cases .flame{color:#1a0d00}
+  .cases .phone__cap span{color:#1a0d00}
+  .cases .cases__note{color:rgba(20,10,0,.6)}
+  .cases .container{text-align:center}
+  .cases .h-sec{margin:0 auto 50px;max-width:18ch}
+  .phones{display:flex;gap:16px;justify-content:flex-start;overflow-x:auto;padding:6px 2px 22px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  @media(min-width:1100px){.phones{justify-content:center;overflow:visible}}
+  .phones::-webkit-scrollbar{height:4px}
+  .phone{flex:0 0 auto;width:198px;scroll-snap-align:center;text-align:center;transition:transform .4s}
+  .phone:hover{transform:translateY(-8px)}
+  .phone__f{position:relative;border:6px solid #15161a;border-radius:30px;overflow:hidden;background:#000;box-shadow:0 24px 50px -18px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.05)}
+  .phone__f::after{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:60px;height:5px;border-radius:4px;background:rgba(0,0,0,.55);z-index:2}
+  .phone__f img{width:100%;display:block}
+  .phone__cap{margin-top:16px}
+  .phone__cap b{display:block;font-size:9px;font-weight:800;letter-spacing:.12em;text-transform:lowercase;color:#fff}
+  .phone__cap span{display:block;font-size:7px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:var(--flame);margin-top:5px}
+  .cases__note{margin-top:14px;font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+  /* ---- SPLIT (fundadora / equipe) ---- */
+  .split{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+  @media(min-width:920px){.split{grid-template-columns:1.05fr .95fr;gap:60px}.split--rev .split__media{order:-1}}
+  .split__media{position:relative}
+  .founder-ph{position:relative;display:flex;justify-content:center}
+  .founder-ph::before{content:"";position:absolute;width:84%;height:84%;left:8%;bottom:0;border-radius:20px;background:radial-gradient(circle at 50% 70%,rgba(255,122,0,.5),transparent 68%);filter:blur(34px);z-index:0}
+  .founder-ph img{position:relative;z-index:1;width:100%;max-width:430px;border-radius:14px}
+  .team-ph{position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line)}
+  .team-ph img{width:100%;display:block}
+  .founder-name{font-weight:900;text-transform:uppercase;line-height:.98;letter-spacing:-.01em;font-size:clamp(1.9rem,4.4vw,3.1rem);color:#fff}
+  .founder-name .role{display:block;color:var(--flame);margin-top:4px}
+  .bio{margin-top:26px;font-weight:300;color:rgba(255,255,255,.6);font-size:.96rem;line-height:1.75}
+  .bio p{margin-bottom:14px}
+  .bio b{color:#fff;font-weight:600}
+  .team-title{font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:-.01em;font-size:clamp(2rem,4.6vw,3.4rem);color:#fff}
+  .team-title .serif{display:block;font-weight:600;font-style:italic;text-transform:none;color:var(--flame);font-size:1.32em;letter-spacing:0;margin-top:2px}
+  .team-names{margin:22px 0;display:flex;flex-direction:column;gap:7px}
+  .team-names li{list-style:none;display:flex;align-items:center;gap:10px;font-size:.96rem;color:rgba(255,255,255,.82);font-weight:500}
+  .team-names li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--flame);flex-shrink:0}
+
+  /* ---- CTA ---- */
+  .cta{position:relative;text-align:center;background:#0A0A0A}
+  .cta__bg{position:absolute;inset:0;z-index:0;background:
+    radial-gradient(80% 130% at 50% 120%, rgba(232,80,14,.55), rgba(120,40,4,.2) 42%, transparent 66%)}
+  .cta h2{font-weight:900;text-transform:uppercase;line-height:.98;letter-spacing:-.02em;font-size:clamp(2.1rem,6vw,4.4rem);margin-bottom:36px}
+  .cta h2 .o{color:var(--flame)}
+
+  /* ---- NOSSA EXPERTISE ---- */
+  .exp-row{display:flex;gap:18px;overflow-x:auto;padding:6px 2px 26px;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .exp-row::-webkit-scrollbar{height:4px}
+  .exp-row::-webkit-scrollbar-thumb{background:var(--flame-hot);border-radius:3px}
+  .exp{flex:0 0 auto;width:236px;scroll-snap-align:start;background:var(--ink-soft);border:1px solid var(--line);padding:30px 26px;transition:border-color .3s,transform .3s}
+  .exp:hover{border-color:rgba(255,122,0,.45);transform:translateY(-6px)}
+  .exp__ic{width:44px;height:44px;color:var(--flame);margin-bottom:22px}
+  .exp__ic svg{width:100%;height:100%}
+  .exp h3{font-weight:800;color:#fff;font-size:.96rem;text-transform:uppercase;letter-spacing:.01em;line-height:1.18;margin-bottom:12px}
+  .exp p{font-weight:300;color:rgba(255,255,255,.5);font-size:.86rem;line-height:1.6}
+  .exp-hint{margin-top:12px;font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+  /* ---- CONHEÇA NOSSO INSTAGRAM (scroll-pinned) ---- */
+  .ig-scroll{position:relative;height:340vh;background:transparent}
+  .ig-sticky{position:sticky;top:0;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;perspective:1500px}
+  .ig-sec__bg{position:absolute;inset:0;z-index:0;background:#7a2d0a url('images/ig-bg.jpg') center top/cover no-repeat}
+  .ig-sec__bg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(26,9,2,.5),rgba(26,9,2,.42))}
+  .ig-sticky__title{position:absolute;top:max(84px,7vh);left:0;right:0;z-index:4;text-align:center;color:#fff;font-weight:900;text-transform:uppercase;line-height:.98;letter-spacing:-.01em;font-size:clamp(1.5rem,4.4vw,2.9rem);padding:0 16px;text-shadow:0 4px 24px rgba(0,0,0,.3)}
+  /* iPhone 16 Pro 3D com espessura real (Desert Titanium) */
+  .ig-phone3d{--w:min(58vw,224px);--d:calc(var(--w)*0.115);position:relative;z-index:3;width:var(--w);aspect-ratio:362/787;transform-style:preserve-3d;will-change:transform}
+  .ig-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:32px;overflow:hidden}
+  .ig-face--front{transform:translateZ(calc(var(--d)/2));border:5px solid #1a1b1f;background:#000;box-shadow:0 40px 60px -28px rgba(20,12,2,.6)}
+  .ig-face--front::after{content:"";position:absolute;top:9px;left:50%;transform:translateX(-50%);width:54px;height:5px;border-radius:4px;background:rgba(0,0,0,.5);z-index:2}
+  .ig-face--front img{width:100%;display:block}
+  .ig-face--back{transform:rotateY(180deg) translateZ(calc(var(--d)/2));border:4px solid #b58f5b;background:linear-gradient(125deg,#c39d68 0%,#e7d1ab 24%,#d6b88a 49%,#bd9661 73%,#ddc09a 100%);box-shadow:0 40px 60px -28px rgba(40,26,6,.55)}
+  /* laterais de titânio (espessura) */
+  .ig-edge{position:absolute;top:1.5%;bottom:1.5%;left:calc(50% - var(--d)/2);width:var(--d);border-radius:4px;background:linear-gradient(to right,#8a6736 0%,#d8bc93 30%,#f5e9d4 50%,#d2b78c 67%,#82602f 100%)}
+  .ig-edge--r{transform:rotateY(90deg) translateZ(calc(var(--w)/2))}
+  .ig-edge--l{transform:rotateY(-90deg) translateZ(calc(var(--w)/2))}
+  .ig-btn{position:absolute;left:14%;width:72%;border-radius:2px;background:linear-gradient(to right,#7a5b2e,#c9a86a 50%,#7a5b2e);box-shadow:inset 0 1px 0 rgba(255,245,225,.3),0 1px 1px rgba(0,0,0,.2)}
+  .ig-btn--action{top:16%;height:3.4%;background:linear-gradient(to right,#8a4a1e,#d98b3e 50%,#8a4a1e)}
+  .ig-btn--volup{top:25%;height:7.5%}
+  .ig-btn--voldn{top:34.5%;height:7.5%}
+  .ig-btn--power{top:27%;height:12%}
+  /* traseira: câmeras + logo */
+  .ip-back{position:absolute;inset:0}
+  .ip-cam{position:absolute;top:4.5%;left:5.5%;width:43%;aspect-ratio:1;border-radius:26%;background:linear-gradient(150deg,#c19a64 0%,#e4cb9f 52%,#ccab78 100%);box-shadow:inset 0 1px 2px rgba(255,248,232,.6),inset 0 0 0 1px rgba(90,60,20,.18),0 4px 12px rgba(60,40,10,.2)}
+  .ip-lens{position:absolute;width:37%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 36% 30%,#5c5f66 0%,#1f2228 46%,#08090b 100%);box-shadow:0 0 0 3.5px #c9a673,0 0 0 4.5px rgba(70,48,16,.22),inset 0 0 4px rgba(150,170,255,.2)}
+  .ip-lens::after{content:"";position:absolute;top:26%;left:28%;width:20%;height:20%;border-radius:50%;background:radial-gradient(circle,rgba(150,190,255,.6),transparent 70%)}
+  .ip-lens--tl{top:8%;left:8%}
+  .ip-lens--tr{top:8%;right:8%}
+  .ip-lens--bl{bottom:8%;left:8%}
+  .ip-lidar{position:absolute;bottom:14%;right:13%;width:13%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#42454c,#0d0e10)}
+  .ip-flash{position:absolute;top:9%;left:54%;width:8%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 40% 35%,#fffaf0,#e6d6b6 60%,#cdbd96);box-shadow:0 0 0 2px rgba(60,40,10,.12)}
+  .ip-logo{position:absolute;top:49%;left:50%;transform:translate(-50%,-50%);width:20%;fill:rgba(120,88,44,.5)}
+  .ig-phrase{position:absolute;z-index:4;opacity:0;will-change:transform,opacity;max-width:min(82%,300px)}
+  .ig-phrase b{font-weight:900;color:#fff;text-transform:uppercase;line-height:1.02;letter-spacing:-.01em;font-size:clamp(1.5rem,5vw,2.4rem);display:block;text-shadow:0 4px 26px rgba(0,0,0,.4)}
+  .ig-phrase--l{text-align:left;left:7%;top:13vh}
+  .ig-phrase--r{text-align:right;right:7%;bottom:15vh}
+  @media(min-width:1000px){
+    .ig-phrase{max-width:330px}
+    .ig-phrase--l{left:5%;top:38%}
+    .ig-phrase--r{right:5%;top:44%;bottom:auto}
+  }
+  .ig-sticky__btn{position:absolute;z-index:4;bottom:6vh;left:0;right:0;display:flex;justify-content:center;padding:0 16px}
+  .ig-sticky__btn .btn{background:#0A0A0A;color:#fff}
+  .ig-sticky__btn .btn:hover{background:#1c1c1c;box-shadow:0 16px 40px -12px rgba(0,0,0,.6)}
+
+  /* ---- ONDE ESTAMOS ---- */
+  .onde__sub{color:var(--flame);font-weight:800;text-transform:uppercase;letter-spacing:.02em;font-size:clamp(1rem,1.9vw,1.4rem);line-height:1.18;margin:6px 0 22px}
+  .onde-photo{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .onde-photo img{width:100%;display:block}
+  .onde-cap{margin-top:12px;font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.4)}
+
+  /* ---- FOOTER ---- */
+  .site-footer{background:var(--ink-soft)}
+  .foot{display:grid;grid-template-columns:1fr;gap:42px;padding:66px 0 30px}
+  @media(min-width:760px){.foot{grid-template-columns:1.7fr 1fr 1fr}}
+  .foot .brand{margin-bottom:18px}
+  .foot__q{font-family:"Playfair Display",serif;font-style:italic;color:rgba(255,255,255,.6);font-size:1.2rem;line-height:1.35;margin:18px 0 12px;max-width:30ch}
+  .foot__d{font-weight:300;color:rgba(255,255,255,.34);font-size:.84rem;line-height:1.8;max-width:34ch}
+  .socials{display:flex;gap:11px;margin-top:24px}
+  .socials a{width:40px;height:40px;border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.5);transition:all .3s}
+  .socials a:hover{border-color:var(--flame);color:var(--flame)}
+  .socials svg{width:17px;height:17px}
+  .foot h4{font-size:9px;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:var(--flame);margin-bottom:22px}
+  .foot li{list-style:none;margin-bottom:13px}
+  .foot li a,.foot li em{font-weight:300;font-style:normal;color:rgba(255,255,255,.55);font-size:.9rem;transition:color .2s}
+  .foot li a:hover{color:var(--flame)}
+  .foot__bottom{border-top:1px solid var(--line);padding:22px 0;display:flex;flex-direction:column;gap:10px;align-items:center;justify-content:space-between}
+  @media(min-width:640px){.foot__bottom{flex-direction:row}}
+  .foot__bottom p{font-size:8px;font-weight:700;letter-spacing:.26em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+  .foot__bottom a{color:rgba(255,255,255,.45)}.foot__bottom a:hover{color:var(--flame)}
+
+  /* ---- WA float ---- */
+  .wa-float{position:fixed;bottom:22px;right:22px;z-index:55;width:56px;height:56px;padding:15px;border-radius:50%;background:#25D366;color:#fff;box-shadow:0 12px 30px -6px rgba(37,211,102,.5);transition:all .3s}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float svg{width:100%;height:100%}
+
+  /* ---- motion ---- */
+  .reveal{opacity:0;transform:translateY(34px)}
+  .reveal.in{opacity:1;transform:none;transition:opacity 1s cubic-bezier(.22,.61,.36,1),transform 1s cubic-bezier(.22,.61,.36,1);transition-delay:var(--d,0ms)}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes cue{0%,100%{transform:translateY(0);opacity:.9}50%{transform:translateY(8px);opacity:.3}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important}.reveal{opacity:1;transform:none;transition:none}[data-par]{transform:none!important}}
+
+  /* ====== MODERN UPGRADES (taste-skill:redesign) ====== */
+  :focus-visible{outline:2px solid var(--flame);outline-offset:3px;border-radius:3px}
+  .hero:focus-visible,[tabindex="-1"]:focus-visible{outline:none}
+  .skip{position:fixed;left:12px;top:-64px;z-index:100;background:var(--flame);color:#1a0d00;padding:11px 20px;font-size:10px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;transition:top .25s}
+  .skip:focus{top:12px}
+  .scroll-prog{position:fixed;top:0;left:0;right:0;height:2px;z-index:70;pointer-events:none}
+  .scroll-prog i{display:block;height:100%;transform:scaleX(0);transform-origin:0 50%;background:linear-gradient(90deg,var(--flame-deep),var(--flame),var(--flame-soft));box-shadow:0 0 12px rgba(255,122,0,.6);will-change:transform}
+  .btn:active{transform:translateY(1px) scale(.985)}
+  .wa-float:active{transform:scale(.96)}
+  .icon-btn:active{transform:translateY(1px)}
+  .site-header.scrolled{box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 34px -14px rgba(0,0,0,.6)}
+  .nav a{position:relative}
+  .nav a::after{content:"";position:absolute;left:0;right:0;bottom:-7px;height:1.5px;background:var(--flame);transform:scaleX(0);transform-origin:0 50%;transition:transform .3s cubic-bezier(.22,.61,.36,1)}
+  .nav a:hover::after,.nav a.active::after{transform:scaleX(1)}
+  .nav a.active{color:#fff}
+  .card{position:relative;overflow:hidden}
+  .card>*{position:relative;z-index:1}
+  .card::before{content:"";position:absolute;inset:0;z-index:0;opacity:0;transition:opacity .35s;pointer-events:none;background:radial-gradient(240px circle at var(--mx,50%) var(--my,50%),rgba(255,122,0,.18),transparent 62%)}
+  .card:hover::before{opacity:1}
+  .marquee:hover .marquee__t{animation-play-state:paused}
+  .card__n,[data-year],.foot__bottom p{font-variant-numeric:tabular-nums}
+  .hero h1,.h-sec,.manifesto h2,.founder-name,.team-title,.team-title .serif,.cta h2,.ig-sticky__title,.ig-phrase b{text-wrap:balance}
+  .lead,.bio p,.hero__sub,.manifesto p,.card p,.exp p,.foot__d,.foot__q{text-wrap:pretty}
+
+  /* ====== PREMIUM DETAIL PASS (soft-skill + frontend-design) ====== */
+  :root{
+    --ease:cubic-bezier(.32,.72,0,1);
+    --shadow-soft:0 2px 8px -3px rgba(0,0,0,.45),0 16px 40px -16px rgba(0,0,0,.6);
+    --shadow-warm:0 18px 50px -16px rgba(255,90,31,.4);
+    --hair:inset 0 1px 0 rgba(255,255,255,.07);
+  }
+  .btn,.card,.exp,.phone,.icon-btn,.socials a,.nav a,.team-ph img,.onde-photo img,.phone__f img,.site-header{transition-timing-function:var(--ease)}
+
+  /* cards — superfície usinada: luz no topo, fio interno, elevação suave */
+  .card{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0) 38%),var(--ink);box-shadow:var(--hair);transition:background .5s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease)}
+  .card:hover{background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,0) 40%),#120d09;transform:translateY(-4px);box-shadow:var(--hair),0 24px 50px -24px rgba(0,0,0,.75),0 0 0 1px rgba(255,122,0,.14)}
+  .card__n{transition:transform .5s var(--ease)}
+  .card:hover .card__n{transform:translateY(-3px)}
+
+  /* expertise — mesmo acabamento */
+  .exp{background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,0) 42%),var(--ink-soft);box-shadow:var(--hair);transition:border-color .4s var(--ease),transform .4s var(--ease),box-shadow .4s var(--ease)}
+  .exp:hover{box-shadow:var(--hair),var(--shadow-soft),0 0 0 1px rgba(255,122,0,.2)}
+  .exp__ic{transition:transform .5s var(--ease)}
+  .exp:hover .exp__ic{transform:translateY(-3px) scale(1.06)}
+
+  /* fotos — zoom suave dentro do quadro + sombra difusa */
+  .team-ph,.onde-photo{box-shadow:var(--shadow-soft),var(--hair)}
+  .phone__f img,.team-ph img,.onde-photo img{transition:transform .7s var(--ease);will-change:transform}
+  .phone:hover .phone__f img,.team-ph:hover img,.onde-photo:hover img{transform:scale(1.05)}
+
+  /* botões — brilho que cruza, relevo e mola física */
+  .btn{position:relative;overflow:hidden}
+  .btn--flame{box-shadow:var(--hair),0 6px 18px -10px rgba(255,90,31,.5)}
+  .btn--flame:hover{box-shadow:var(--hair),var(--shadow-warm)}
+  .btn::before{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.3),transparent);transform:skewX(-18deg);transition:left .7s var(--ease);pointer-events:none}
+  .btn:hover::before{left:140%}
+  .btn--ghost::before{background:linear-gradient(100deg,transparent,rgba(255,122,0,.16),transparent)}
+
+  /* entrada — fade-up "pesado" com desfoque resolvendo */
+  .reveal{filter:blur(6px)}
+  .reveal.in{filter:blur(0);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease);transition-delay:var(--d,0ms)}
+
+  @media(prefers-reduced-motion:reduce){.reveal{filter:none}.btn::before{display:none}}
+
+  /* hero — FOTO real do mundo laranja (substitui o planeta CSS) */
+  .hero__photo{position:absolute;inset:0;z-index:0;background:#e7e5e2 url('images/hero-mockup.webp') center center/cover no-repeat}
+  @media(orientation:portrait){.hero__photo{background-position:38% center}}
+  .hero__veil{position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(6,4,3,.88),rgba(6,4,3,.52) 34%,rgba(6,4,3,.12) 60%,transparent 78%),linear-gradient(to bottom,transparent 56%,rgba(6,4,3,.74) 100%)}
+  @media(min-width:1024px){.hero__veil{background:linear-gradient(90deg,rgba(6,4,3,.82),rgba(6,4,3,.42) 40%,transparent 66%),linear-gradient(to bottom,transparent 62%,rgba(6,4,3,.66) 100%)}}
+
+  /* ===== TROCA DE FUNDOS: Como Atuamos → laranja · Cases → branco ===== */
+  /* Como Atuamos: fundo laranja (o que antes era do Cases) */
+  #servicos{background:#c2410a url('images/instagram-sky.jpg') center/cover no-repeat !important}
+  #servicos::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,122,0,.42),rgba(150,48,4,.78))}
+  #servicos .flame{color:#1a0d00}
+  #servicos .lead{color:rgba(255,255,255,.85)}
+  /* Cases: fundo branco */
+  .cases{background:#fff !important}
+  .cases__bg{display:none}
+  .cases .h-sec{color:#15110E}
+  .cases .flame{color:var(--flame-deep)}
+  .cases .phone__cap b{color:#15110E}
+  .cases .phone__cap span{color:var(--flame-deep)}
+  .cases .cases__note{color:rgba(20,10,0,.55)}
+
+  /* ===== Seção Instagram: fundo rola, celular fixo e sem rebarbas ===== */
+  .ig-sticky{z-index:1}
+  .ig-edge,.ig-face--back{display:none}
+  .ig-face--front{box-shadow:0 34px 70px -26px rgba(0,0,0,.72),0 0 0 1px rgba(255,255,255,.05),inset 0 1px 0 rgba(255,255,255,.05)}
+  .ig-sticky__title{text-shadow:0 2px 20px rgba(0,0,0,.55)}
+  .ig-phrase b{text-shadow:0 2px 20px rgba(0,0,0,.7)}
+
+  /* ===== Onde Estamos BRANCA · CTA BRANCA + botão WhatsApp maior ===== */
+  #onde-estamos{background:#fff !important}
+  #onde-estamos .label{color:rgba(20,10,0,.55)}
+  #onde-estamos .rule{background:var(--flame-deep)}
+  #onde-estamos .onde__sub{color:var(--flame-deep)}
+  #onde-estamos .bio{color:rgba(20,10,0,.72)}
+  #onde-estamos .bio b{color:#15110E}
+  #onde-estamos .onde-cap{color:rgba(20,10,0,.5)}
+  .cta__bg{display:none}
+  .cta .btn--lg{padding:25px 58px;font-size:13px}
+  .cta .btn--lg svg{width:20px !important;height:20px !important}
+  .cta{background:#fff !important}
+  .cta h2{color:#15110E}
+  .cta h2 .o{color:var(--flame-deep)}
+
+  /* ===== Hero = mockup do notebook; só os 2 botões, alinhados à tela ===== */
+  .hero__cta{position:absolute;left:25%;top:57%;z-index:3;display:flex;flex-direction:row;gap:12px;margin:0}
+  @media(max-width:600px){.hero__cta{left:50%;right:auto;top:auto;bottom:7%;transform:translateX(-50%);flex-direction:column;gap:10px;width:max-content;align-items:stretch}}
+</style>
+</head>
+<body>
+
+<a href="#conteudo" class="skip">Pular para o conteúdo</a>
+<div class="scroll-prog" aria-hidden="true"><i data-prog></i></div>
+
+<!-- fundo infinito do site -->
+<div class="site-bg" aria-hidden="true"><div class="site-bg__i"></div><div class="site-bg__v"></div></div>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="topo" data-header>
+  <div class="hwrap">
+    <a href="#topo" class="brand">
+      <img src="images/logo.png" alt="Perspectiva" />
+      <span class="brand__txt"><span class="brand__name">Perspectiva</span><span class="brand__sub">Agência de Marketing</span></span>
+    </a>
+    <nav class="nav">
+      <a href="#servicos">Método</a>
+      <a href="#cases">Cases</a>
+      <a href="#expertise">Serviços</a>
+      <a href="#quem-somos">Quem Somos</a>
+      <a href="#instagram">Nosso Instagram</a>
+      <a href="#onde-estamos">Localização</a>
+    </nav>
+    <div class="actions">
+      <a href="https://instagram.com/perspectiva_mkt" target="_blank" rel="noopener" class="icon-btn" aria-label="Instagram">
+        <svg fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://wa.me/5551997736606" target="_blank" rel="noopener" class="btn btn--wa btn--sm">WhatsApp</a>
+      <button class="burger" data-burger aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <nav class="mobile-nav" data-mnav>
+    <div class="mobile-nav__in">
+      <a href="#servicos" data-ml>Método</a>
+      <a href="#cases" data-ml>Cases</a>
+      <a href="#expertise" data-ml>Serviços</a>
+      <a href="#quem-somos" data-ml>Quem Somos</a>
+      <a href="#instagram" data-ml>Nosso Instagram</a>
+      <a href="#onde-estamos" data-ml>Localização</a>
+      <a href="https://wa.me/5551997736606" target="_blank" rel="noopener" class="btn btn--flame">Comece sua revolução</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ===== 1. HERO ===== -->
+<section class="hero" id="conteudo" tabindex="-1">
+  <div class="hero__photo" aria-hidden="true"></div>
+  <div class="hero__cta">
+    <a href="https://wa.me/5551997736606" target="_blank" rel="noopener" class="btn btn--flame btn--lg">
+      Comece sua revolução
+      <svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+    </a>
+    <a href="#servicos" class="btn btn--ghost btn--lg">Saber mais</a>
+  </div>
+</section>
+
+<!-- marquee -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__t">
+    <div class="marquee__g">
+      <span class="marquee__i">Gestão de Rede</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Branding</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Posicionamento</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Estratégia</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Storytelling</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Tom de Voz</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Landing Pages</span><span class="marquee__s">✦</span>
+    </div>
+    <div class="marquee__g">
+      <span class="marquee__i">Gestão de Rede</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Branding</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Posicionamento</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Estratégia</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Storytelling</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Tom de Voz</span><span class="marquee__s">✦</span>
+      <span class="marquee__i">Landing Pages</span><span class="marquee__s">✦</span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== 2. MANIFESTO (off-white) ===== -->
+<section class="section s-off manifesto">
+  <div class="container">
+    <div class="reveal eyebrow"><span class="rule"></span><span class="label">No que acreditamos:</span></div>
+    <h2 class="reveal" style="--d:.06s">
+      <span class="l1">Post bonito nunca</span><br/>
+      <span class="l2">construiu uma marca.</span><br/>
+      <span class="flame">História</span> <span class="l1">sim.</span>
+    </h2>
+    <p class="reveal" style="--d:.16s">Seu perfil não é só mais um. <b>Se você não decide como quer ser visto, o mercado decide por você.</b> A gente existe pra isso não acontecer.</p>
+  </div>
+</section>
+
+<!-- ===== 3. SERVIÇOS / COMO ATUAMOS (dark) ===== -->
+<section class="section" id="servicos">
+  <div class="glow--soft glow" style="width:520px;height:520px;top:-120px;right:-80px" data-par="0.06"></div>
+  <div class="container">
+    <div class="reveal sec-head">
+      <h2 class="h-sec"><span style="color:#fff">Como</span> <span class="flame">atuamos:</span></h2>
+      <p class="lead">O método por trás de estratégias que transformam negócios em referências.</p>
+    </div>
+    <div class="cards">
+      <div class="reveal card"><span class="card__n">01</span><h3>Imersão &amp;<br/>Diagnóstico</h3><p>Entendemos quem você é. Briefing, análise de mercado, diferenciais e objetivos para construir uma comunicação que faça sentido para o seu negócio.</p></div>
+      <div class="reveal card" style="--d:.08s"><span class="card__n">02</span><h3>Posicionamento &amp;<br/>Percepção</h3><p>Estruturamos a estratégia por trás da sua marca. Construímos a mensagem, o tom de voz e os pilares que criam reconhecimento, autoridade e diferenciação no mercado.</p></div>
+      <div class="reveal card" style="--d:.16s"><span class="card__n">03</span><h3>Estratégia &amp;<br/>Conteúdo</h3><p>Planejamento, roteiros, conteúdos e campanhas que reforçam a percepção da sua marca em cada ponto de contato.</p></div>
+      <div class="reveal card" style="--d:.24s"><span class="card__n">04</span><h3>Consistência &amp;<br/>Crescimento</h3><p>Acompanhamento contínuo, ajustes estratégicos e fortalecimento da marca para gerar lembrança e confiança.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 4. CASES (dark + orange) ===== -->
+<section class="section cases" id="cases">
+  <div class="cases__bg" data-par="0.05"></div>
+  <div class="noise"></div>
+  <div class="container">
+    <h2 class="reveal h-sec">Algumas das marcas que se <span class="flame">posicionaram</span></h2>
+    <div class="phones">
+      <a class="reveal phone" href="https://instagram.com/kn.advocaciacriminal" target="_blank" rel="noopener">
+        <div class="phone__f"><img src="images/feed-karen.png" alt="@kn.advocaciacriminal" loading="lazy"/></div>
+        <div class="phone__cap"><b>@kn.advocaciacriminal</b><span>Advocacia</span></div>
+      </a>
+      <a class="reveal phone" href="https://instagram.com/graoseafeto.cafe" target="_blank" rel="noopener" style="--d:.07s">
+        <div class="phone__f"><img src="images/feed-graoseafeto.png" alt="@graoseafeto.cafe" loading="lazy"/></div>
+        <div class="phone__cap"><b>@graoseafeto.cafe</b><span>Cafeteria</span></div>
+      </a>
+      <a class="reveal phone" href="https://instagram.com/dracamilabragadentista" target="_blank" rel="noopener" style="--d:.14s">
+        <div class="phone__f"><img src="images/feed-camila.png" alt="@dracamilabragadentista" loading="lazy"/></div>
+        <div class="phone__cap"><b>@dracamilabragadentista</b><span>Odontologia</span></div>
+      </a>
+      <a class="reveal phone" href="https://instagram.com/aliancapastelaria" target="_blank" rel="noopener" style="--d:.21s">
+        <div class="phone__f"><img src="images/feed-alianca.png" alt="@aliancapastelaria" loading="lazy"/></div>
+        <div class="phone__cap"><b>@aliancapastelaria</b><span>Pastelaria</span></div>
+      </a>
+      <a class="reveal phone" href="https://instagram.com/rafconfortoficial" target="_blank" rel="noopener" style="--d:.28s">
+        <div class="phone__f"><img src="images/feed-rafconfort.png" alt="@rafconfortoficial" loading="lazy"/></div>
+        <div class="phone__cap"><b>@rafconfortoficial</b><span>Calçados</span></div>
+      </a>
+      <a class="reveal phone" href="https://instagram.com/naturallight_sap" target="_blank" rel="noopener" style="--d:.35s">
+        <div class="phone__f"><img src="images/feed-natural.jpg" alt="@naturallight_sap" loading="lazy"/></div>
+        <div class="phone__cap"><b>@naturallight_sap</b><span>Produtos Naturais</span></div>
+      </a>
+      <a class="reveal phone" href="https://instagram.com/gelopatrulha" target="_blank" rel="noopener" style="--d:.42s">
+        <div class="phone__f"><img src="images/feed-gelo.jpg" alt="@gelopatrulha" loading="lazy"/></div>
+        <div class="phone__cap"><b>@gelopatrulha</b><span>Fábrica de Gelo</span></div>
+      </a>
+    </div>
+    <p class="reveal cases__note">Toque em um perfil para abrir no Instagram ↗</p>
+  </div>
+</section>
+
+<!-- ===== NOSSA EXPERTISE (dark) ===== -->
+<section class="section" id="expertise">
+  <div class="glow--soft glow" style="width:480px;height:480px;top:-100px;left:-120px" data-par="0.05"></div>
+  <div class="container">
+    <div class="reveal sec-head" style="max-width:680px">
+      <h2 class="h-sec"><span style="color:#fff">Nossa</span> <span class="flame">expertise</span></h2>
+      <p class="lead">Conheça as frentes que fazem parte do nosso trabalho.</p>
+    </div>
+    <div class="exp-row reveal">
+      <div class="exp">
+        <div class="exp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg></div>
+        <h3>Posicionamento de Marca</h3><p>Definimos como sua empresa deve ser vista e lembrada pelo mercado.</p>
+      </div>
+      <div class="exp">
+        <div class="exp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m22 8-6 4 6 4V8Z"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg></div>
+        <h3>Produção de Fotos e Vídeos</h3><p>Captação, roteiros e edição para mostrar sua empresa de forma profissional.</p>
+      </div>
+      <div class="exp">
+        <div class="exp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.6" y1="13.5" x2="15.4" y2="17.5"/><line x1="15.4" y1="6.5" x2="8.6" y2="10.5"/></svg></div>
+        <h3>Gestão de Rede Social</h3><p>Planejamento, criação e gerenciamento dos conteúdos da sua marca.</p>
+      </div>
+      <div class="exp">
+        <div class="exp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m3 11 18-5v12L3 14v-3Z"/><path d="M11.6 16.8a3 3 0 1 1-5.8-1.6"/></svg></div>
+        <h3>Tráfego Pago</h3><p>Campanhas estratégicas para alcançar mais pessoas e gerar oportunidades de negócio.</p>
+      </div>
+      <div class="exp">
+        <div class="exp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg></div>
+        <h3>Landing Page</h3><p>Páginas criadas para transformar visitantes em contatos e clientes.</p>
+      </div>
+      <div class="exp">
+        <div class="exp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15.5 3.5 21 9l-3 3-5.5-5.5z"/><path d="M12.5 6.5 3 16v5h5l9.5-9.5z"/><circle cx="10.5" cy="11.5" r="1.3"/></svg></div>
+        <h3>Identidade Visual</h3><p>Construção da imagem visual da sua marca com personalidade e consistência.</p>
+      </div>
+      <div class="exp">
+        <div class="exp__ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3>Consultoria Estratégica</h3><p>Direcionamento para empresas que desejam fortalecer seu posicionamento e comunicação.</p>
+      </div>
+    </div>
+    <p class="reveal exp-hint">Role para o lado →</p>
+  </div>
+</section>
+
+<!-- ===== 5. FUNDADORA (dark) ===== -->
+<section class="section" id="quem-somos">
+  <div class="glow" style="width:480px;height:480px;top:40px;left:-160px;opacity:.6" data-par="0.08"></div>
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <div class="eyebrow"><span class="rule"></span><span class="label">Quem somos</span></div>
+        <h2 class="founder-name">Katelyn Santos<span class="role">A Fundadora</span></h2>
+        <div class="bio">
+          <p>Prazer, meu nome é <b>Katelyn Santos</b>, tenho 22 anos, sou graduanda em Direito, atuo há mais de 6 anos com marketing e posicionamento estratégico.</p>
+          <p>Ao longo dessa trajetória, percebi que marcas fortes não são construídas apenas por aquilo que vendem, mas pela forma como são percebidas. Foi dessa visão que nasceu a Perspectiva.</p>
+          <p>Acredito que um posicionamento sólido se constrói com essência, propósito e autenticidade. Antes de qualquer estratégia, existe uma história. Antes de qualquer publicação, existe uma marca que precisa ser compreendida.</p>
+          <p>Meu trabalho é ajudar empresas a encontrarem sua identidade, comunicarem seus diferenciais e ocuparem um espaço relevante na mente de quem realmente importa: seus clientes.</p>
+          <p>Porque, no final, não se trata apenas de ser visto. <b>Trata-se de ser lembrado pelo motivo certo.</b></p>
+        </div>
+      </div>
+      <div class="reveal split__media" style="--d:.12s">
+        <div class="founder-ph"><img src="images/katelyn.webp" alt="Katelyn Santos — Fundadora da Perspectiva" data-par="-0.05" loading="lazy"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 6. EQUIPE (dark) ===== -->
+<section class="section" id="equipe">
+  <div class="glow--soft glow" style="width:460px;height:460px;bottom:-120px;right:-60px" data-par="0.05"></div>
+  <div class="container">
+    <div class="split split--rev">
+      <div class="reveal">
+        <h2 class="team-title">Por trás da<span class="serif">Perspectiva</span></h2>
+        <p class="bio" style="margin-top:22px">A Perspectiva é construída por pessoas que acreditam que toda marca possui uma história única e merece ser percebida pelo seu verdadeiro valor. Por trás de cada estratégia, cada projeto e cada resultado, está uma equipe que une diferentes visões, experiências e habilidades para transformar negócios em marcas mais fortes.</p>
+        <ul class="team-names">
+          <li><b>Katelyn Santos</b>&nbsp;– Fundadora</li>
+          <li><b>Bruno Oliveira</b>&nbsp;– Co-fundador</li>
+          <li><b>Rafaela Almeida</b>&nbsp;– Colaboradora</li>
+        </ul>
+        <p class="bio" style="margin-top:0">Mais do que uma equipe, somos uma união de ideias, perspectivas e propósitos. Cada projeto que passa por aqui carrega um pouco daquilo que acreditamos: comunicação com propósito, posicionamento com personalidade e marcas construídas para serem lembradas.</p>
+        <p class="bio" style="margin-top:0"><b>Porque grandes resultados não acontecem por acaso. Eles são construídos por pessoas que enxergam além do óbvio.</b></p>
+      </div>
+      <div class="reveal split__media" style="--d:.12s">
+        <div class="team-ph"><img src="images/team.jpg" alt="Equipe da Perspectiva" data-par="-0.04" loading="lazy"/></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ONDE ESTAMOS (branca) ===== -->
+<section class="section onde" id="onde-estamos">
+  <div class="glow--soft glow" style="width:440px;height:440px;bottom:-120px;right:-80px" data-par="0.05"></div>
+  <div class="container">
+    <div class="split">
+      <div class="reveal">
+        <div class="eyebrow"><span class="rule"></span><span class="label">Localização</span></div>
+        <h2 class="h-sec" style="color:#15110E">Onde estamos</h2>
+        <p class="onde__sub">De Santo Antônio da Patrulha para todo o Brasil</p>
+        <p class="bio" style="margin-top:0">Atuamos em Santo Antônio da Patrulha, Vale do Paranhana, Região Metropolitana de Porto Alegre e Litoral Norte Gaúcho. Mas a distância nunca foi um limite para boas ideias.</p>
+        <p class="bio" style="margin-top:0">Hoje, atendemos empresas em diferentes regiões do país, incluindo clientes no <b>Rio Grande do Sul, Santa Catarina e São Paulo</b>, levando estratégia, posicionamento e presença digital para marcas que desejam crescer.</p>
+        <a class="btn btn--flame" style="margin-top:10px" href="https://wa.me/5551997736606" target="_blank" rel="noopener">
+          Clique e saiba mais
+          <svg fill="none" stroke="currentColor" stroke-width="1.7" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+      <div class="reveal split__media" style="--d:.12s">
+        <div class="onde-photo"><img src="images/santo-antonio.jpg" alt="Santo Antônio da Patrulha — RS" data-par="-0.04" loading="lazy"/></div>
+        <p class="onde-cap">Foto de Santo Antônio da Patrulha · RS</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONHEÇA NOSSO INSTAGRAM (scroll-pinned) ===== -->
+<section class="ig-scroll" id="instagram">
+  <div class="ig-sticky">
+    <div class="ig-sec__bg"></div>
+    <h2 class="ig-sticky__title">Conheça nosso Instagram</h2>
+
+    <div class="ig-phone3d" data-igphone>
+      <a class="ig-face ig-face--front" href="https://instagram.com/perspectiva_mkt" target="_blank" rel="noopener" aria-label="@perspectiva_mkt no Instagram">
+        <img src="images/ig-perspectiva.png" alt="@perspectiva_mkt no Instagram" loading="lazy"/>
+      </a>
+      <div class="ig-face ig-face--back" aria-hidden="true">
+        <div class="ip-back">
+          <div class="ip-cam">
+            <span class="ip-lens ip-lens--tl"></span>
+            <span class="ip-lens ip-lens--tr"></span>
+            <span class="ip-lens ip-lens--bl"></span>
+            <span class="ip-lidar"></span>
+          </div>
+          <span class="ip-flash"></span>
+          <svg class="ip-logo" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+        </div>
+      </div>
+      <div class="ig-edge ig-edge--l"><span class="ig-btn ig-btn--action"></span><span class="ig-btn ig-btn--volup"></span><span class="ig-btn ig-btn--voldn"></span></div>
+      <div class="ig-edge ig-edge--r"><span class="ig-btn ig-btn--power"></span></div>
+    </div>
+
+    <div class="ig-phrase ig-phrase--l" data-igp><b>Aqui a marca<br/>ganha voz.</b></div>
+    <div class="ig-phrase ig-phrase--r" data-igp><b>Conteúdo com<br/>propósito.</b></div>
+    <div class="ig-phrase ig-phrase--l" data-igp><b>Estratégia em<br/>cada post.</b></div>
+    <div class="ig-phrase ig-phrase--r" data-igp><b>Vem ver<br/>de perto.</b></div>
+
+    <div class="ig-sticky__btn">
+      <a class="btn" href="https://wa.me/5551997736606" target="_blank" rel="noopener">
+        <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 12.05 0"/></svg>
+        Fale com a nossa equipe
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 7. CTA ===== -->
+<section class="section cta" id="contato">
+  <div class="cta__bg" data-par="0.05"></div>
+  <div class="noise"></div>
+  <div class="container">
+    <h2 class="reveal">Pronto(a) para dar início à<br/><span class="o">revolução</span> da sua empresa?</h2>
+    <a class="reveal btn btn--wa btn--lg" style="--d:.12s" href="https://wa.me/5551997736606" target="_blank" rel="noopener">
+      <svg fill="currentColor" viewBox="0 0 24 24" style="width:17px;height:17px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 12.05 0"/></svg>
+      Clique e saiba mais
+    </a>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer" id="redes">
+  <div class="container">
+    <div class="foot">
+      <div>
+        <a href="#topo" class="brand"><img src="images/logo.png" alt="Perspectiva"/><span class="brand__txt"><span class="brand__name">Perspectiva</span><span class="brand__sub">Agência de Marketing</span></span></a>
+        <p class="foot__q">"O marketing como você nunca viu."</p>
+        <p class="foot__d">Estratégia, posicionamento e conteúdo para marcas que querem ser vistas como realmente são e lembradas pelo motivo certo.</p>
+        <div class="socials">
+          <a href="https://instagram.com/perspectiva_mkt" target="_blank" rel="noopener" aria-label="Instagram"><svg fill="none" stroke="currentColor" stroke-width="1.4" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6" fill="currentColor" stroke="none"/></svg></a>
+          <a href="https://wa.me/5551997736606" target="_blank" rel="noopener" aria-label="WhatsApp"><svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 12.05 0"/></svg></a>
+        </div>
+      </div>
+      <div>
+        <h4>Nossas Redes</h4>
+        <ul>
+          <li><a href="https://instagram.com/perspectiva_mkt" target="_blank" rel="noopener">@perspectiva_mkt</a></li>
+          <li><a href="https://wa.me/5551997736606" target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><a href="mailto:katelynmarketingg@gmail.com">katelynmarketingg@gmail.com</a></li>
+        </ul>
+      </div>
+      <div id="local">
+        <h4>Localização</h4>
+        <ul>
+          <li><em>Atendimento online · Brasil</em></li>
+          <li><em>Seg a Sex · 9h às 18h</em></li>
+          <li><a href="https://wa.me/5551997736606" target="_blank" rel="noopener">Fale com a gente →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <p>© <span data-year>2026</span> Perspectiva · Agência de Marketing</p>
+      <p>Por <a href="https://instagram.com/katelyn_santos_" target="_blank" rel="noopener">@katelyn_santos_</a></p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/5551997736606" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp">
+  <svg fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.875 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893A11.821 11.821 0 0 0 12.05 0"/></svg>
+</a>
+
+<script>
+  document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
+
+  const header=document.querySelector('[data-header]');
+  const burger=document.querySelector('[data-burger]');
+  const mnav=document.querySelector('[data-mnav]');
+  let open=false;
+  const setMenu=v=>{open=v;burger.classList.toggle('open',v);mnav.style.maxHeight=v?mnav.scrollHeight+'px':'0px';};
+  burger.addEventListener('click',()=>setMenu(!open));
+  document.querySelectorAll('[data-ml]').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+
+  // estrelas piscando do hero
+  const starBox=document.querySelector('[data-stars]');
+  if(starBox){let s='';for(let i=0;i<72;i++){const x=(Math.random()*100).toFixed(2),y=(Math.random()*70).toFixed(2),sz=(Math.random()*1.8+0.7).toFixed(2),du=(Math.random()*3+2).toFixed(2),dl=(Math.random()*4).toFixed(2);s+=`<span class="hero__star" style="left:${x}%;top:${y}%;width:${sz}px;height:${sz}px;animation-duration:${du}s;animation-delay:${dl}s"></span>`;}starBox.innerHTML=s;}
+  const cityBox=document.querySelector('[data-cities]');
+  if(cityBox){let c='';for(let i=0;i<56;i++){const x=(Math.random()*100).toFixed(2),y=(Math.pow(Math.random(),1.7)*72).toFixed(2),sz=(Math.random()*1.6+0.7).toFixed(2),du=(Math.random()*2.5+1.6).toFixed(2),dl=(Math.random()*3).toFixed(2);c+=`<span class="hero__city" style="left:${x}%;top:${y}%;width:${sz}px;height:${sz}px;animation-duration:${du}s;animation-delay:${dl}s"></span>`;}cityBox.innerHTML=c;}
+
+  // reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12,rootMargin:'0px 0px -50px 0px'});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // spotlight que segue o cursor nos cards
+  document.querySelectorAll('.card').forEach(card=>{
+    card.addEventListener('pointermove',e=>{const r=card.getBoundingClientRect();card.style.setProperty('--mx',(e.clientX-r.left)+'px');card.style.setProperty('--my',(e.clientY-r.top)+'px');});
+  });
+
+  // parallax + header on scroll (single rAF loop)
+  const pars=[...document.querySelectorAll('[data-par]')];
+  const bgI=document.querySelector('.site-bg__i');
+  const igScroll=document.querySelector('.ig-scroll');
+  const igBg=document.querySelector('.ig-sec__bg');
+  const igPhone=document.querySelector('[data-igphone]');
+  const igPhrases=[...document.querySelectorAll('[data-igp]')];
+  const progBar=document.querySelector('[data-prog]');
+  const navLinks=[...document.querySelectorAll('.nav a[href^="#"]')];
+  const spy=navLinks.map(a=>({a,sec:document.querySelector(a.getAttribute('href'))})).filter(o=>o.sec);
+  let ticking=false;
+  function frame(){
+    const y=window.scrollY||window.pageYOffset;
+    header.classList.toggle('scrolled',y>40);
+    const docH=(document.documentElement.scrollHeight-window.innerHeight)||1;
+    if(progBar) progBar.style.transform='scaleX('+Math.min(1,Math.max(0,y/docH)).toFixed(4)+')';
+    let cur=null;const probe=y+window.innerHeight*0.32;
+    for(const o of spy){if(o.sec.offsetTop<=probe)cur=o.a;}
+    for(const a of navLinks)a.classList.toggle('active',a===cur);
+    if(bgI){ bgI.style.transform='translateY('+Math.max(-170,Math.min(0,-y*0.05)).toFixed(1)+'px)'; }
+    if(igScroll){
+      const r=igScroll.getBoundingClientRect();
+      const p=Math.min(1,Math.max(0,(-r.top)/(r.height-window.innerHeight||1)));
+      /* celular parado: sempre de frente (mockup + feed @perspectiva_mkt), sem giro */
+      if(igBg) igBg.style.backgroundPositionY=(p*100).toFixed(1)+'%';
+      const n=igPhrases.length;
+      for(let i=0;i<n;i++){
+        const c=(i+0.5)/n, d=Math.abs(p-c);
+        let o=1-d/(0.62/n); o=o<0?0:(o>1?1:o);
+        const el=igPhrases[i], dir=el.classList.contains('ig-phrase--r')?1:-1;
+        el.style.opacity=o.toFixed(3);
+        el.style.transform='translateX('+(dir*(1-o)*38).toFixed(1)+'px)';
+      }
+    }
+    for(const el of pars){
+      const r=el.getBoundingClientRect();
+      const mid=r.top+r.height/2-window.innerHeight/2;
+      el.style.transform=`translate3d(0,${(mid*-parseFloat(el.dataset.par)).toFixed(1)}px,0)`;
+    }
+    ticking=false;
+  }
+  function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(frame);}}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll,{passive:true});
+  frame();
+</script>
+</body>
+</html>
