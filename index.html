@@ -208,7 +208,8 @@
   .port__head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:18px;margin-bottom:50px}
   .port__head p{max-width:40ch}
   .port__grid{display:grid;grid-template-columns:1fr;gap:44px}
-  .lp{display:flex;flex-direction:column;gap:16px;max-width:940px;margin-inline:auto;width:100%}
+  @media(min-width:900px){.port__grid{grid-template-columns:repeat(3,1fr);gap:28px}.port__grid .lp__win{aspect-ratio:3/4}}
+  .lp{display:flex;flex-direction:column;gap:16px;min-width:0}
   .lp__frame{position:relative;display:block;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--cream);box-shadow:0 20px 40px -28px rgba(37,36,34,.5);transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
   .lp__hint{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);z-index:3;display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:999px;background:rgba(37,36,34,.82);color:var(--cream);font-family:var(--sans);font-weight:600;font-size:11px;letter-spacing:.03em;pointer-events:none;backdrop-filter:blur(2px);transition:opacity .4s var(--ease);animation:lphint 2.2s ease-in-out infinite}
   .lp__hint span{display:inline-block;animation:lparrow 1.4s ease-in-out infinite}
@@ -220,7 +221,7 @@
   .lp__bar{display:flex;align-items:center;gap:6px;padding:11px 14px;background:var(--cream-3);border-bottom:1px solid var(--line)}
   .lp__bar i{width:9px;height:9px;border-radius:50%;background:var(--greige)}
   .lp__bar i:first-child{background:var(--terra)}
-  .lp__url{margin-left:10px;font-family:var(--body);font-size:11px;color:var(--tx-soft);letter-spacing:.02em}
+  .lp__url{margin-left:10px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-family:var(--body);font-size:11px;color:var(--tx-soft);letter-spacing:.02em}
   .lp__win{aspect-ratio:16/10;overflow-y:auto;overflow-x:hidden;position:relative;background:var(--cream);scrollbar-width:thin;scrollbar-color:var(--greige) transparent;-webkit-overflow-scrolling:touch}
   .lp__win::-webkit-scrollbar{width:8px}
   .lp__win::-webkit-scrollbar-thumb{background:var(--greige);border-radius:8px}
@@ -504,31 +505,27 @@
     <div class="marcas__track stagger" id="marcasTrack">
       <a class="mcard" href="https://instagram.com/kn.advocaciacriminal" target="_blank" rel="noopener">
         <div class="phone"><img src="assets/feed-karen.png" alt="Perfil @kn.advocaciacriminal" loading="lazy"></div>
-        <div><div class="mcard__h">@kn.advocaciacriminal</div><div class="mcard__n">Advocacia</div></div>
-      </a>
-      <a class="mcard" href="https://instagram.com/graoseafeto.cafe" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-graoseafeto.png" alt="Perfil @graoseafeto.cafe" loading="lazy"></div>
-        <div><div class="mcard__h">@graoseafeto.cafe</div><div class="mcard__n">Cafeteria</div></div>
+        <div><div class="mcard__h">@kn.advocaciacriminal</div><div class="mcard__n">Advocacia Criminal</div></div>
       </a>
       <a class="mcard" href="https://instagram.com/dracamilabragadentista" target="_blank" rel="noopener">
         <div class="phone"><img src="assets/feed-camila.png" alt="Perfil @dracamilabragadentista" loading="lazy"></div>
         <div><div class="mcard__h">@dracamilabragadentista</div><div class="mcard__n">Odontologia</div></div>
       </a>
+      <a class="mcard" href="https://instagram.com/advmarcelolemos" target="_blank" rel="noopener">
+        <div class="phone"><img src="assets/feed-marcelo.jpg" alt="Perfil @advmarcelolemos" loading="lazy"></div>
+        <div><div class="mcard__h">@advmarcelolemos</div><div class="mcard__n">Penal Empresarial</div></div>
+      </a>
       <a class="mcard" href="https://instagram.com/aliancapastelaria" target="_blank" rel="noopener">
         <div class="phone"><img src="assets/feed-alianca.png" alt="Perfil @aliancapastelaria" loading="lazy"></div>
         <div><div class="mcard__h">@aliancapastelaria</div><div class="mcard__n">Pastelaria</div></div>
       </a>
-      <a class="mcard" href="https://instagram.com/rafconfortoficial" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-rafconfort.png" alt="Perfil @rafconfortoficial" loading="lazy"></div>
-        <div><div class="mcard__h">@rafconfortoficial</div><div class="mcard__n">Calçados</div></div>
+      <a class="mcard" href="https://instagram.com/vsprevidenciario" target="_blank" rel="noopener">
+        <div class="phone"><img src="assets/feed-vs.jpg" alt="Perfil @vsprevidenciario" loading="lazy"></div>
+        <div><div class="mcard__h">@vsprevidenciario</div><div class="mcard__n">Advocacia Previdenciária</div></div>
       </a>
-      <a class="mcard" href="https://instagram.com/naturallight_sap" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-natural.jpg" alt="Perfil @naturallight_sap" loading="lazy"></div>
-        <div><div class="mcard__h">@naturallight_sap</div><div class="mcard__n">Produtos Naturais</div></div>
-      </a>
-      <a class="mcard" href="https://instagram.com/gelopatrulha" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-gelo.jpg" alt="Perfil @gelopatrulha" loading="lazy"></div>
-        <div><div class="mcard__h">@gelopatrulha</div><div class="mcard__n">Fábrica de Gelo</div></div>
+      <a class="mcard" href="https://instagram.com/diovanacarvalho.adv" target="_blank" rel="noopener">
+        <div class="phone"><img src="assets/feed-diovana.jpg" alt="Perfil @diovanacarvalho.adv" loading="lazy"></div>
+        <div><div class="mcard__h">@diovanacarvalho.adv</div><div class="mcard__n">Previdenciário e Trabalhista</div></div>
       </a>
     </div>
     <p class="marcas__hint">Toque em um perfil para abrir no Instagram ↗</p>
@@ -550,7 +547,7 @@
         <div class="lp__frame">
           <div class="lp__bar"><i></i><i></i><i></i><span class="lp__url">advogadomarcelolemos.com.br</span><a class="lp__open" href="https://www.advogadomarcelolemos.com.br/" target="_blank" rel="noopener">abrir ↗</a></div>
           <div class="lp__win">
-            <img class="lp__long" src="https://image.thum.io/get/fullpage/width/1200/noanimate/https://www.advogadomarcelolemos.com.br/" onerror="this.onerror=null;this.src='https://s.wp.com/mshots/v1/https%3A%2F%2Fwww.advogadomarcelolemos.com.br%2F?w=1400';this.onerror=function(){this.onerror=null;this.src='assets/lp-marcelo.webp'}" alt="Landing page Marcelo Lemos — Advocacia" loading="lazy">
+            <img class="lp__long" src="assets/lp-marcelo.jpg" alt="Landing page Marcelo Lemos — Advocacia" loading="lazy">
           </div>
           <div class="lp__hint">role para ver o site<span>↓</span></div>
         </div>
@@ -560,7 +557,7 @@
         <div class="lp__frame">
           <div class="lp__bar"><i></i><i></i><i></i><span class="lp__url">knadvocaciacriminal.com.br</span><a class="lp__open" href="https://knadvocaciacriminal.com.br/" target="_blank" rel="noopener">abrir ↗</a></div>
           <div class="lp__win">
-            <img class="lp__long" src="https://image.thum.io/get/fullpage/width/1200/noanimate/https://knadvocaciacriminal.com.br/" onerror="this.onerror=null;this.src='https://s.wp.com/mshots/v1/https%3A%2F%2Fknadvocaciacriminal.com.br%2F?w=1400';this.onerror=function(){this.onerror=null;this.src='assets/lp-kn.webp'}" alt="Landing page KN Advocacia Criminal" loading="lazy">
+            <img class="lp__long" src="assets/lp-kn.jpg" alt="Landing page KN Advocacia Criminal" loading="lazy">
           </div>
           <div class="lp__hint">role para ver o site<span>↓</span></div>
         </div>
@@ -570,7 +567,7 @@
         <div class="lp__frame">
           <div class="lp__bar"><i></i><i></i><i></i><span class="lp__url">dentistacamilabraga.com.br</span><a class="lp__open" href="https://dentistacamilabraga.com.br/" target="_blank" rel="noopener">abrir ↗</a></div>
           <div class="lp__win">
-            <img class="lp__long" src="https://image.thum.io/get/fullpage/width/1200/noanimate/https://dentistacamilabraga.com.br/" onerror="this.onerror=null;this.src='https://s.wp.com/mshots/v1/https%3A%2F%2Fdentistacamilabraga.com.br%2F?w=1400';this.onerror=function(){this.onerror=null;this.src='assets/lp-camila.webp'}" alt="Landing page Dra. Camila Braga — Odontologia" loading="lazy">
+            <img class="lp__long" src="assets/lp-camila.jpg" alt="Landing page Dra. Camila Braga — Odontologia" loading="lazy">
           </div>
           <div class="lp__hint">role para ver o site<span>↓</span></div>
         </div>
