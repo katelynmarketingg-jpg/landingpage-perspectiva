@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.className+=' js';</script>
 <title>Perspectiva.Mkt</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -160,7 +165,8 @@
   .sol__head p{max-width:52ch;color:var(--tx-soft)}
   .sol__grid{display:grid;grid-template-columns:1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
   @media(min-width:700px){.sol__grid{grid-template-columns:1fr 1fr}}
-  @media(min-width:1040px){.sol__grid{grid-template-columns:repeat(4,1fr)}}
+  @media(min-width:700px) and (max-width:1099px){.sol__grid .card:last-child{grid-column:1/-1}}
+  @media(min-width:1100px){.sol__grid{grid-template-columns:repeat(5,1fr)}.sol__grid .card{padding:36px 24px 32px}.sol__grid .card h3{font-size:1.18rem}}
   .card{background:var(--cream);padding:40px 30px 36px;position:relative;transition:background .3s var(--ease)}
   .card:hover{background:var(--cream-3)}
   .card__ico{width:38px;height:38px;color:var(--ink);margin:0 0 20px;stroke-width:1.4}
@@ -241,11 +247,15 @@
   .lp--add svg{width:26px;height:26px;color:var(--terra)}
   .port__line{font-family:var(--sans);font-weight:600;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.02em;line-height:1.2;color:var(--ink);max-width:30ch;margin:64px auto 0;text-align:center}
   .juri-sec{background:var(--cream)}
-  .juri{background:var(--ink);color:var(--cream);border-radius:10px;padding:clamp(30px,5vw,56px);display:grid;grid-template-columns:1fr;gap:20px}
-  @media(min-width:840px){.juri{grid-template-columns:.95fr 1.05fr;gap:48px;align-items:center}}
-  .juri .eyebrow{color:var(--terra)}
-  .juri h3{color:var(--cream);font-size:clamp(1.5rem,2.8vw,2.2rem);font-weight:700;letter-spacing:-.02em;margin-top:16px;line-height:1.14}
-  .juri p{color:var(--tx-onink-soft);line-height:1.62}
+  .juri{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+  @media(min-width:900px){.juri{grid-template-columns:1.1fr .9fr;gap:72px}}
+  .juri__body{max-width:560px}
+  .juri .h2{margin-top:20px}
+  .juri .lead{margin-top:24px}
+  .juri .btn{margin-top:36px}
+  .juri__media{aspect-ratio:4/5;border-radius:8px}
+  .juri__media img{width:100%;height:100%;object-fit:cover}
+  @media(max-width:899px){.juri__media{max-width:440px}}
 
   /* ===== DEPOIMENTOS (slider) ===== */
   .rev{background:var(--espresso);color:var(--cream);overflow:hidden}
@@ -334,6 +344,7 @@
       <a href="#solucoes">O que fazemos</a>
       <a href="#redes">Redes</a>
       <a href="#landing">Landing pages</a>
+      <a href="#juridico">Jurídico</a>
       <a href="#equipe">Equipe</a>
       <a href="#contato">Contato</a>
     </nav>
@@ -434,6 +445,11 @@
       <p>Atuamos em diferentes pontos da comunicação para que todos eles contem a mesma história: a sua.</p>
     </div>
     <div class="sol__grid stagger">
+      <article class="card"><span class="card__tick"></span>
+        <svg class="card__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg>
+        <h3>Posicionamento e Consultoria Estratégica</h3>
+        <p>Antes de qualquer post ou anúncio, definimos como sua marca deve ser vista, com quem ela fala e o que a diferencia.</p>
+      </article>
       <article class="card"><span class="card__tick"></span>
         <svg class="card__ico" viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M4 4h16v12H5l-1 4z"/><path d="M8 9h8M8 12h5"/></svg>
         <h3>Gestão de Redes Sociais</h3>
@@ -570,11 +586,14 @@
 <section class="sec juri-sec" id="juridico">
   <div class="wrap">
     <div class="juri reveal">
-      <div>
+      <div class="juri__body">
         <span class="eyebrow">Marketing Jurídico</span>
-        <h3>Uma perspectiva de quem também estuda e vive o Direito.</h3>
+        <h2 class="h2">Uma perspectiva de quem também estuda e vive o Direito.</h2>
+        <p class="lead">Conhecemos as particularidades do setor jurídico para construir uma comunicação que respeita seus limites sem limitar sua personalidade. Estratégia, posicionamento e conteúdo pensados para aproximar, transmitir confiança e revelar quem existe por trás de cada atuação.</p>
+        <a class="btn btn--terra" href="#contato">Falar sobre meu escritório</a>
       </div>
-      <p>Conhecemos as particularidades do setor jurídico para construir uma comunicação que respeita seus limites sem limitar sua personalidade. Estratégia, posicionamento e conteúdo pensados para aproximar, transmitir confiança e revelar quem existe por trás de cada atuação.</p>
+      <!-- EDITAR: trocar o placeholder por <div class="juri__media"><img src="assets/juridico.jpg" alt="..." loading="lazy"></div> -->
+      <div class="juri__media ph ph--corner" data-label="Foto · Marketing Jurídico"></div>
     </div>
   </div>
 </section>
