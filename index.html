@@ -335,6 +335,50 @@
   html.js .stagger.in>*{opacity:1;transform:none}
   @media(prefers-reduced-motion:reduce){.hero__bg{animation:none}html.js .stagger>*{opacity:1!important;transform:none!important}}
 
+  /* ===== motion v2 ===== */
+  :root{--spring:cubic-bezier(.32,.72,0,1)}
+  .reveal{transition:opacity 1s var(--spring),transform 1s var(--spring),filter 1s var(--spring)}
+  html.js .reveal{transform:translateY(44px);filter:blur(5px)}
+  html.js .reveal.in{filter:none}
+  html.js .stagger>*{transform:translateY(36px);transition:opacity .9s var(--spring),transform .9s var(--spring)}
+  /* títulos palavra por palavra */
+  .w{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em}
+  .w>span{display:inline-block;transform:translateY(110%);transition:transform 1.1s var(--spring);transition-delay:calc(var(--i,0)*42ms + var(--d,0ms))}
+  .split.in .w>span{transform:none}
+  /* linha do selo cresce */
+  html.js .reveal .eyebrow::before,html.js .hero .eyebrow::before{transform:scaleX(0);transform-origin:left;transition:transform .9s var(--spring) .25s}
+  html.js .reveal.in .eyebrow::before,html.js .hero.is-in .eyebrow::before{transform:none}
+  /* entrada da primeira tela */
+  html.js .hero__inner>*:not(h1){opacity:0;transform:translateY(28px);transition:opacity 1s var(--spring),transform 1s var(--spring)}
+  html.js .hero.is-in .hero__inner>*{opacity:1;transform:none}
+  html.js .hero.is-in .hero__inner>.hero__sub{transition-delay:.55s}
+  html.js .hero.is-in .hero__inner>.hero__actions{transition-delay:.7s}
+  .hero__inner{will-change:transform}
+  /* fotos com zoom ao entrar */
+  .img-rv{overflow:hidden}
+  .img-rv img{transform:scale(1.16);transition:transform 1.8s var(--spring)}
+  .img-rv.in img{transform:none}
+  /* botões magnéticos */
+  .btn.is-mag{transform:translate3d(var(--mx,0),var(--my,0),0)!important;transition:transform .5s var(--spring),background .28s,border-color .28s,box-shadow .28s}
+  .btn:active{scale:.97}
+  .btn svg{transition:transform .5s var(--spring)}
+  /* cards de serviço */
+  .card{transition:background .3s var(--ease),transform .6s var(--spring),box-shadow .6s var(--spring)}
+  .card:hover{transform:translateY(-6px);box-shadow:0 30px 50px -34px rgba(37,36,34,.4);z-index:1}
+  .card__ico{transition:transform .6s var(--spring),color .3s}
+  .card:hover .card__ico{transform:translateY(-3px) rotate(-8deg);color:var(--terra)}
+  /* barra de progresso + menu que some ao rolar */
+  .progress{position:fixed;top:0;left:0;right:0;height:2px;background:var(--terra);transform-origin:0 50%;transform:scaleX(0);z-index:61;pointer-events:none}
+  header.nav{transition:box-shadow .3s var(--ease),transform .6s var(--spring)}
+  header.nav.nav--hide{transform:translateY(-100%)}
+  @media(prefers-reduced-motion:reduce){
+    html.js .reveal,html.js .hero__inner>*{filter:none!important;opacity:1!important;transform:none!important}
+    .w>span,.img-rv img{transform:none!important}
+    html.js .reveal .eyebrow::before,html.js .hero .eyebrow::before{transform:none!important}
+    .progress{display:none}
+    header.nav.nav--hide{transform:none}
+  }
+
   @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
   .hero__inner>*{animation:rise .8s var(--ease) both}
   .hero__inner>*:nth-child(2){animation-delay:.08s}
@@ -774,6 +818,73 @@
       var p=document.getElementById(prevId), n=document.getElementById(nextId);
       if(p)p.addEventListener('click',function(){ tr.scrollBy({left:-stepw(),behavior:'smooth'}); });
       if(n)n.addEventListener('click',function(){ tr.scrollBy({left:stepw(),behavior:'smooth'}); });
+    }
+
+    /* ===== motion v2 ===== */
+    function splitWords(el){
+      var i=0;
+      (function walk(node){
+        [].slice.call(node.childNodes).forEach(function(n){
+          if(n.nodeType===3){
+            var parts=n.textContent.split(/(\s+)/), frag=document.createDocumentFragment();
+            parts.forEach(function(t){
+              if(!t)return;
+              if(/^\s+$/.test(t)){ frag.appendChild(document.createTextNode(t)); return; }
+              var w=document.createElement('span'); w.className='w';
+              var inner=document.createElement('span'); inner.textContent=t; inner.style.setProperty('--i',i++);
+              w.appendChild(inner); frag.appendChild(w);
+            });
+            n.parentNode.replaceChild(frag,n);
+          } else if(n.nodeType===1){ walk(n); }
+        });
+      })(el);
+      el.setAttribute('aria-label',el.textContent.replace(/\s+/g,' ').trim());
+      el.classList.add('split');
+    }
+    var hero=document.querySelector('.hero');
+    var heads=[].slice.call(document.querySelectorAll('.hero h1, .h2'));
+    var imgs=[].slice.call(document.querySelectorAll('.manisay__media, .crew__media'));
+    if(!reduce){
+      heads.forEach(splitWords);
+      imgs.forEach(function(m){ m.classList.add('img-rv'); });
+      if(hero){ var h1=hero.querySelector('h1'); if(h1)h1.style.setProperty('--d','150ms');
+        requestAnimationFrame(function(){ setTimeout(function(){ hero.classList.add('is-in'); if(h1)h1.classList.add('in'); },80); }); }
+      if('IntersectionObserver' in window){
+        var io4=new IntersectionObserver(function(es){
+          es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io4.unobserve(e.target); } });
+        },{threshold:.2,rootMargin:'0px 0px -6% 0px'});
+        heads.forEach(function(h){ if(!hero||!hero.contains(h))io4.observe(h); });
+        imgs.forEach(function(m){ io4.observe(m); });
+      } else { heads.concat(imgs).forEach(function(el){ el.classList.add('in'); }); }
+
+      /* botões magnéticos (só mouse) */
+      if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+        [].slice.call(document.querySelectorAll('.btn--terra, .btn--ghost-ink, .btn--cream')).forEach(function(b){
+          b.addEventListener('pointermove',function(ev){
+            var r=b.getBoundingClientRect(), x=ev.clientX-r.left-r.width/2, y=ev.clientY-r.top-r.height/2;
+            b.style.setProperty('--mx',(x*.22).toFixed(1)+'px'); b.style.setProperty('--my',(y*.35).toFixed(1)+'px'); b.classList.add('is-mag');
+          });
+          b.addEventListener('pointerleave',function(){ b.style.setProperty('--mx','0px'); b.style.setProperty('--my','0px'); });
+        });
+      }
+
+      /* progresso, menu que some e profundidade da primeira tela (1 frame por rolagem) */
+      var bar=document.createElement('div'); bar.className='progress'; bar.setAttribute('aria-hidden','true'); document.body.appendChild(bar);
+      var hin=document.querySelector('.hero__inner'), lastY=window.scrollY, ticking=false;
+      function frame(){
+        ticking=false;
+        var y=window.scrollY, max=document.documentElement.scrollHeight-innerHeight;
+        bar.style.transform='scaleX('+(max>0?Math.min(y/max,1):0)+')';
+        if(nav){
+          var open=t&&t.getAttribute('aria-expanded')==='true';
+          if(!open&&y>lastY+4&&y>320)nav.classList.add('nav--hide');
+          else if(y<lastY-4||y<320)nav.classList.remove('nav--hide');
+        }
+        if(hin&&hero&&y<hero.offsetHeight){ hin.style.transform='translate3d(0,'+(y*.28).toFixed(1)+'px,0)'; hin.style.opacity=String(Math.max(1-y/(hero.offsetHeight*.9),0)); }
+        lastY=y;
+      }
+      window.addEventListener('scroll',function(){ if(!ticking){ ticking=true; requestAnimationFrame(frame); } },{passive:true});
+      frame();
     }
     slider('revTrack','revPrev','revNext','.rev__card',24);
     slider('marcasTrack','mPrev','mNext','.mcard',26);
