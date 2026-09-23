@@ -253,8 +253,8 @@
   .juri .h2{margin-top:20px}
   .juri .lead{margin-top:24px}
   .juri .btn{margin-top:36px}
-  .juri__media{aspect-ratio:4/5;border-radius:8px}
-  .juri__media img{width:100%;height:100%;object-fit:cover}
+  .juri__media{margin:0;aspect-ratio:4/5;border-radius:8px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(37,36,34,.45)}
+  .juri__media img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
   @media(max-width:899px){.juri__media{max-width:440px}}
 
   /* ===== DEPOIMENTOS (slider) ===== */
@@ -648,8 +648,7 @@
         <p class="lead">Conhecemos as particularidades do setor jurídico para construir uma comunicação que respeita seus limites sem limitar sua personalidade. Estratégia, posicionamento e conteúdo pensados para aproximar, transmitir confiança e revelar quem existe por trás de cada atuação.</p>
         <a class="btn btn--terra" href="#contato">Falar sobre meu escritório</a>
       </div>
-      <!-- EDITAR: trocar o placeholder por <div class="juri__media"><img src="assets/juridico.jpg" alt="..." loading="lazy"></div> -->
-      <div class="juri__media ph ph--corner" data-label="Foto · Marketing Jurídico"></div>
+      <figure class="juri__media"><img src="assets/juridico.jpg" alt="Advogada sentada à mesa do escritório, com as mãos entrelaçadas" loading="lazy" width="933" height="1400"></figure>
     </div>
   </div>
 </section>
@@ -843,7 +842,7 @@
     }
     var hero=document.querySelector('.hero');
     var heads=[].slice.call(document.querySelectorAll('.hero h1, .h2'));
-    var imgs=[].slice.call(document.querySelectorAll('.manisay__media, .crew__media'));
+    var imgs=[].slice.call(document.querySelectorAll('.manisay__media, .crew__media, .juri__media'));
     if(!reduce){
       heads.forEach(splitWords);
       imgs.forEach(function(m){ m.classList.add('img-rv'); });
