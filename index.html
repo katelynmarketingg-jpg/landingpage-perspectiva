@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <script>document.documentElement.className+=' js';</script>
 <title>Perspectiva.Mkt</title>
+<link rel="preload" as="image" href="assets/hero.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
@@ -103,7 +104,7 @@
   .hero{position:relative;color:var(--tx-onink);isolation:isolate;overflow:hidden}
   /* EDITAR: para foto de fundo, troque os gradientes de .hero__bg por:
      background:url('images/hero.jpg') center/cover no-repeat;  (o .hero__scrim garante a legibilidade) */
-  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero.jpg') 62% 82%/cover no-repeat;background-color:#241a14}
+  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero.webp') 62% 82%/cover no-repeat;background-color:#241a14}
   .hero__bg::after{content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
   .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,18,14,.94) 0%,rgba(26,18,14,.8) 34%,rgba(26,18,14,.5) 64%,rgba(26,18,14,.24) 100%)}
@@ -447,7 +448,7 @@
 <section class="sec manifesto-say">
   <div class="wrap">
     <div class="manisay__grid reveal">
-      <div class="manisay__media"><img src="assets/olhar.jpg" alt="Arquitetura vista de um novo ângulo" loading="lazy"></div>
+      <div class="manisay__media"><img src="assets/olhar.webp" alt="Arquitetura vista de um novo ângulo" loading="lazy"></div>
       <div class="manifesto__body">
         <span class="eyebrow">O nosso olhar</span>
         <h2 class="h2" style="margin-top:20px">Um novo ângulo não muda aquilo que existe. Muda aquilo que conseguimos <em>enxergar</em>.</h2>
@@ -563,27 +564,27 @@
     </div>
     <div class="marcas__track stagger" id="marcasTrack">
       <a class="mcard" href="https://instagram.com/kn.advocaciacriminal" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-karen.png" alt="Perfil @kn.advocaciacriminal" loading="lazy"></div>
+        <div class="phone"><img src="assets/feed-karen.webp" alt="Perfil @kn.advocaciacriminal" loading="lazy" decoding="async"></div>
         <div><div class="mcard__h">@kn.advocaciacriminal</div><div class="mcard__n">Advocacia Criminal</div></div>
       </a>
       <a class="mcard" href="https://instagram.com/dracamilabragadentista" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-camila.png" alt="Perfil @dracamilabragadentista" loading="lazy"></div>
+        <div class="phone"><img src="assets/feed-camila.webp" alt="Perfil @dracamilabragadentista" loading="lazy" decoding="async"></div>
         <div><div class="mcard__h">@dracamilabragadentista</div><div class="mcard__n">Odontologia</div></div>
       </a>
       <a class="mcard" href="https://instagram.com/advmarcelolemos" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-marcelo.jpg" alt="Perfil @advmarcelolemos" loading="lazy"></div>
+        <div class="phone"><img src="assets/feed-marcelo.webp" alt="Perfil @advmarcelolemos" loading="lazy" decoding="async"></div>
         <div><div class="mcard__h">@advmarcelolemos</div><div class="mcard__n">Penal Empresarial</div></div>
       </a>
       <a class="mcard" href="https://instagram.com/aliancapastelaria" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-alianca.png" alt="Perfil @aliancapastelaria" loading="lazy"></div>
+        <div class="phone"><img src="assets/feed-alianca.webp" alt="Perfil @aliancapastelaria" loading="lazy" decoding="async"></div>
         <div><div class="mcard__h">@aliancapastelaria</div><div class="mcard__n">Pastelaria</div></div>
       </a>
       <a class="mcard" href="https://instagram.com/vsprevidenciario" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-vs.jpg" alt="Perfil @vsprevidenciario" loading="lazy"></div>
+        <div class="phone"><img src="assets/feed-vs.webp" alt="Perfil @vsprevidenciario" loading="lazy" decoding="async"></div>
         <div><div class="mcard__h">@vsprevidenciario</div><div class="mcard__n">Advocacia Previdenciária</div></div>
       </a>
       <a class="mcard" href="https://instagram.com/diovanacarvalho.adv" target="_blank" rel="noopener">
-        <div class="phone"><img src="assets/feed-diovana.jpg" alt="Perfil @diovanacarvalho.adv" loading="lazy"></div>
+        <div class="phone"><img src="assets/feed-diovana.webp" alt="Perfil @diovanacarvalho.adv" loading="lazy" decoding="async"></div>
         <div><div class="mcard__h">@diovanacarvalho.adv</div><div class="mcard__n">Previdenciário e Trabalhista</div></div>
       </a>
     </div>
@@ -606,7 +607,7 @@
         <div class="lp__frame">
           <div class="lp__bar"><i></i><i></i><i></i><span class="lp__url">advogadomarcelolemos.com.br</span><a class="lp__open" href="https://www.advogadomarcelolemos.com.br/" target="_blank" rel="noopener">abrir ↗</a></div>
           <div class="lp__win">
-            <img class="lp__long" src="assets/lp-marcelo.jpg" alt="Landing page Marcelo Lemos — Advocacia" loading="lazy">
+            <img class="lp__long" src="assets/lp-marcelo.webp" width="760" height="5054" decoding="async" alt="Landing page Marcelo Lemos — Advocacia" loading="lazy">
           </div>
           <div class="lp__hint">role para ver o site<span>↓</span></div>
         </div>
@@ -616,7 +617,7 @@
         <div class="lp__frame">
           <div class="lp__bar"><i></i><i></i><i></i><span class="lp__url">knadvocaciacriminal.com.br</span><a class="lp__open" href="https://knadvocaciacriminal.com.br/" target="_blank" rel="noopener">abrir ↗</a></div>
           <div class="lp__win">
-            <img class="lp__long" src="assets/lp-kn.jpg" alt="Landing page KN Advocacia Criminal" loading="lazy">
+            <img class="lp__long" src="assets/lp-kn.webp" width="760" height="4647" decoding="async" alt="Landing page KN Advocacia Criminal" loading="lazy">
           </div>
           <div class="lp__hint">role para ver o site<span>↓</span></div>
         </div>
@@ -626,7 +627,7 @@
         <div class="lp__frame">
           <div class="lp__bar"><i></i><i></i><i></i><span class="lp__url">dentistacamilabraga.com.br</span><a class="lp__open" href="https://dentistacamilabraga.com.br/" target="_blank" rel="noopener">abrir ↗</a></div>
           <div class="lp__win">
-            <img class="lp__long" src="assets/lp-camila.jpg" alt="Landing page Dra. Camila Braga — Odontologia" loading="lazy">
+            <img class="lp__long" src="assets/lp-camila.webp" width="760" height="6208" decoding="async" alt="Landing page Dra. Camila Braga — Odontologia" loading="lazy">
           </div>
           <div class="lp__hint">role para ver o site<span>↓</span></div>
         </div>
@@ -648,7 +649,7 @@
         <p class="lead">Conhecemos as particularidades do setor jurídico para construir uma comunicação que respeita seus limites sem limitar sua personalidade. Estratégia, posicionamento e conteúdo pensados para aproximar, transmitir confiança e revelar quem existe por trás de cada atuação.</p>
         <a class="btn btn--terra" href="#contato">Falar sobre meu escritório</a>
       </div>
-      <figure class="juri__media"><img src="assets/juridico.jpg" alt="Advogada sentada à mesa do escritório, com as mãos entrelaçadas" loading="lazy" width="933" height="1400"></figure>
+      <figure class="juri__media"><img src="assets/juridico.webp" alt="Advogada sentada à mesa do escritório, com as mãos entrelaçadas" loading="lazy" width="900" height="1350" decoding="async"></figure>
     </div>
   </div>
 </section>
@@ -692,7 +693,7 @@
 <section class="sec team" id="equipe">
   <div class="wrap">
     <div class="crew reveal">
-      <figure class="crew__media"><img src="assets/team.jpg" alt="Katelyn Santos, Bruno Oliveira e Rafaela Almeida, da Perspectiva" loading="lazy" width="543" height="724"></figure>
+      <figure class="crew__media"><img src="assets/team.webp" alt="Katelyn Santos, Bruno Oliveira e Rafaela Almeida, da Perspectiva" loading="lazy" width="543" height="724"></figure>
       <div class="crew__body">
         <span class="eyebrow">Família Perspectiva</span>
         <h2 class="h2">Antes de existir uma agência, existiram pessoas que enxergavam diferente.</h2>
