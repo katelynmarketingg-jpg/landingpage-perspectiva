@@ -279,6 +279,17 @@
 
   /* ===== EQUIPE ===== */
   .team{background:var(--cream)}
+  .crew{display:grid;grid-template-columns:1fr;gap:44px;align-items:center}
+  @media(min-width:900px){.crew{grid-template-columns:.9fr 1.1fr;gap:72px}}
+  .crew__media{margin:0;border-radius:8px;overflow:hidden;aspect-ratio:3/4;box-shadow:0 30px 60px -30px rgba(37,36,34,.45)}
+  .crew__media img{width:100%;height:100%;object-fit:cover}
+  @media(max-width:899px){.crew__media{max-width:460px}}
+  .crew .h2{margin-top:20px}
+  .crew .lead{margin-top:22px}
+  .crew__list{list-style:none;margin-top:28px;border-top:1px solid var(--line)}
+  .crew__list li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .crew__list strong{font-family:var(--sans);font-weight:700;font-size:1.08rem;color:var(--ink)}
+  .crew__list span{font-size:.92rem;color:var(--tx-soft);text-align:right}
   .concept__grid{display:grid;grid-template-columns:1fr;gap:40px}
   @media(min-width:900px){.concept__grid{grid-template-columns:.92fr 1.08fr;gap:74px;align-items:start}}
   .team__lead{display:grid;grid-template-columns:1fr;gap:26px}
@@ -632,48 +643,21 @@
 <!-- 09 · QUEM FAZ -->
 <section class="sec team" id="equipe">
   <div class="wrap">
-    <div class="reveal" style="margin-bottom:36px">
-      <span class="eyebrow">Família Perspectiva</span>
-    </div>
-    <div class="concept__grid reveal" style="margin-bottom:56px">
-      <div>
+    <div class="crew reveal">
+      <figure class="crew__media"><img src="assets/team.jpg" alt="Katelyn Santos, Bruno Oliveira e Rafaela Almeida, da Perspectiva" loading="lazy" width="543" height="724"></figure>
+      <div class="crew__body">
+        <span class="eyebrow">Família Perspectiva</span>
         <h2 class="h2">Antes de existir uma agência, existiram pessoas que enxergavam diferente.</h2>
-      </div>
-      <div class="lead">
-        <p>A Perspectiva é feita por pessoas curiosas o suficiente para perguntar antes de responder, inquietas o suficiente para não aceitar o óbvio e próximas o suficiente para entender que nenhuma marca cabe inteira dentro de um briefing.</p>
-        <p style="margin-top:16px">Estratégia, criação, audiovisual, design e comunicação se encontram por aqui com um mesmo propósito: mostrar ao mundo aquilo que nossos clientes já têm de único.</p>
+        <p class="lead">A Perspectiva é feita por pessoas curiosas o suficiente para perguntar antes de responder, inquietas o suficiente para não aceitar o óbvio e próximas o suficiente para entender que nenhuma marca cabe inteira dentro de um briefing.</p>
+        <ul class="crew__list">
+          <li><strong>Katelyn Santos</strong><span>Fundadora &amp; Estrategista</span></li>
+          <li><strong>Bruno Oliveira</strong><span>Co-fundador</span></li>
+          <li><strong>Rafaela Almeida</strong><span>Colaboradora</span></li>
+        </ul>
+        <p class="lead">Estratégia, criação, audiovisual, design e comunicação se encontram por aqui com um mesmo propósito: mostrar ao mundo aquilo que nossos clientes já têm de único.</p>
       </div>
     </div>
-    <div class="team__lead stagger">
-      <article class="leader">
-        <div class="ph ph--dark ph--corner" data-label="Foto — Katelyn Santos"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-        <div class="leader__b">
-          <div class="leader__role">Fundadora &amp; Estrategista</div>
-          <div class="leader__name">Katelyn Santos</div>
-          <div class="leader__sig">a mente por trás da estratégia</div>
-          <p class="leader__t">Constrói cada posicionamento do zero, fora dos moldes tradicionais do direito e do marketing. <!-- EDITAR: breve apresentação real --></p>
-        </div>
-      </article>
-      <article class="leader">
-        <div class="ph ph--dark ph--corner" data-label="Foto — Bruno Oliveira"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-        <div class="leader__b">
-          <div class="leader__role">Co-fundador</div>
-          <div class="leader__name">Bruno Oliveira</div>
-          <div class="leader__sig">estratégia &amp; performance</div>
-          <p class="leader__t">Cuida do lado de performance e crescimento — para que o posicionamento vire resultado real. <!-- EDITAR: função e breve apresentação real --></p>
-        </div>
-      </article>
-      <article class="leader">
-        <div class="ph ph--dark ph--corner" data-label="Foto — Rafaela Almeida"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></div>
-        <div class="leader__b">
-          <div class="leader__role">Colaboradora</div>
-          <div class="leader__name">Rafaela Almeida</div>
-          <div class="leader__sig">execução &amp; conteúdo</div>
-          <p class="leader__t">Traduz a estratégia em conteúdo e presença no dia a dia das marcas. <!-- EDITAR: função e breve apresentação real --></p>
-        </div>
-      </article>
-    </div>
-    <!-- EDITAR: para adicionar mais gente, duplique um bloco .leader -->
+    <!-- EDITAR: quando chegarem as fotos individuais, dá para voltar aos cards .leader (ver histórico do git) -->
   </div>
 </section>
 
