@@ -110,9 +110,13 @@
   .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/equipe-horizontal.webp') 50% 40%/cover no-repeat;background-color:#241a14}
   .hero__bg::after{content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
-  .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,18,14,.94) 0%,rgba(26,18,14,.8) 34%,rgba(26,18,14,.5) 64%,rgba(26,18,14,.24) 100%)}
-  .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:640px;padding-block:96px}
-  @media(min-width:900px){.hero__inner{min-height:calc(100svh - 72px);padding-block:80px}}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(26,18,14,.72) 0%,rgba(26,18,14,.38) 32%,rgba(26,18,14,0) 58%),linear-gradient(90deg,rgba(26,18,14,.35) 0%,rgba(26,18,14,.12) 45%,rgba(26,18,14,0) 70%)}
+  .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:640px;padding-block:96px 48px}
+  @media(min-width:900px){.hero__inner{min-height:calc(100svh - 72px);padding-block:80px 56px}}
+  .hero h1.display{font-size:clamp(2rem,3.6vw,3.1rem);max-width:22ch}
+  @media(max-width:899px){.hero__inner{min-height:calc(100svh - 72px);padding-top:56vw}.hero__bg{background-size:auto 62%;background-position:50% 0;background-color:#1a120e}.hero__scrim{background:linear-gradient(180deg,rgba(26,18,14,0) 0,rgba(26,18,14,0) 36%,rgba(26,18,14,.92) 61%,#1a120e 100%)}}
+  .hero .hero__sub{margin-top:16px;font-size:clamp(.98rem,1.2vw,1.1rem)}
+  .hero .hero__actions{margin-top:26px}
   .hero .eyebrow{color:#fff}
   .hero .eyebrow::before{background:var(--terra)}
   .hero h1{color:#fff;margin:26px 0 0;max-width:17ch;text-shadow:0 2px 30px rgba(0,0,0,.35)}
