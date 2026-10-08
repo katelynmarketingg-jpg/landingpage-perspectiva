@@ -107,14 +107,14 @@
   .hero{position:relative;color:var(--tx-onink);isolation:isolate;overflow:hidden}
   /* EDITAR: para foto de fundo, troque os gradientes de .hero__bg por:
      background:url('images/hero.jpg') center/cover no-repeat;  (o .hero__scrim garante a legibilidade) */
-  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero-movimento.webp') 50% 34%/max(112%,calc((100svh - 72px)*1.62)) auto no-repeat;background-color:#241a14}
+  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero-movimento.webp') 50% 32%/max(112%,calc((100svh - 72px)*2.1)) auto no-repeat;background-color:#241a14}
   .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(26,18,14,.72) 0%,rgba(26,18,14,.38) 32%,rgba(26,18,14,0) 58%),linear-gradient(90deg,rgba(26,18,14,.35) 0%,rgba(26,18,14,.12) 45%,rgba(26,18,14,0) 70%)}
   .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:640px;padding-block:96px 48px}
   @media(min-width:900px){.hero__inner{min-height:calc(100svh - 72px);padding-block:80px 56px}}
   .hero h1.display{font-size:clamp(2rem,3.6vw,3.1rem);max-width:22ch}
   .hero h1.display .br-pc{display:none}
   @media(min-width:900px){.hero__inner{align-items:center;text-align:center}.hero h1.display{max-width:none;white-space:nowrap;font-size:clamp(2rem,2.9vw,2.9rem)}.hero h1.display .br-pc{display:inline}.hero .hero__sub{margin-inline:auto}.hero .hero__actions{justify-content:center}.hero__scrim{background:linear-gradient(0deg,rgba(26,18,14,.78) 0%,rgba(26,18,14,.5) 30%,rgba(26,18,14,0) 52%)}}
-  @media(max-width:899px){.hero__inner{min-height:calc(100svh - 72px);padding-top:56vw}.hero__bg{background-size:auto 62%;background-position:50% 0;background-color:#1a120e}.hero__scrim{background:linear-gradient(180deg,rgba(26,18,14,0) 0,rgba(26,18,14,0) 36%,rgba(26,18,14,.92) 61%,#1a120e 100%)}}
+  @media(max-width:899px){.hero__inner{min-height:calc(100svh - 72px);padding-top:56vw}.hero__bg{background-size:auto 74%;background-position:50% 0;background-color:#1a120e}.hero__scrim{background:linear-gradient(180deg,rgba(26,18,14,0) 0,rgba(26,18,14,0) 36%,rgba(26,18,14,.92) 61%,#1a120e 100%)}}
   .hero .hero__sub{margin-top:16px;font-size:clamp(.98rem,1.2vw,1.1rem)}
   .hero .hero__actions{margin-top:26px}
   .hero .eyebrow{color:#fff}
@@ -427,7 +427,6 @@
   <div class="hero__bg" aria-hidden="true"></div>
   <div class="hero__scrim" aria-hidden="true"></div>
   <div class="wrap hero__inner" id="conteudo">
-    <span class="eyebrow">Perspectiva — Agência de Marketing</span>
     <h1 class="display">A forma como você é visto<br class="br-pc"> muda a forma como é <em>escolhido</em>.</h1>
     <p class="hero__sub">Construímos estratégias que tornam perceptível aquilo que já diferencia a sua marca.</p>
     <div class="hero__actions">
