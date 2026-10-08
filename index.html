@@ -107,14 +107,13 @@
   .hero{position:relative;color:var(--tx-onink);isolation:isolate;overflow:hidden}
   /* EDITAR: para foto de fundo, troque os gradientes de .hero__bg por:
      background:url('images/hero.jpg') center/cover no-repeat;  (o .hero__scrim garante a legibilidade) */
-  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero-equipe.webp') right -22vw top/auto 100% no-repeat;background-color:#241a14}
+  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero-equipe.webp') 50% 0/100% auto no-repeat;background-color:#1a120e}
   .hero__bg::after{content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
-  .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,18,14,1) 0%,rgba(26,18,14,1) 40%,rgba(26,18,14,.6) 52%,rgba(26,18,14,0) 66%,rgba(26,18,14,0) 100%)}
-  @media(min-width:1600px){.hero__scrim{background:linear-gradient(90deg,rgba(26,18,14,1) 0%,rgba(26,18,14,1) 47%,rgba(26,18,14,.55) 55%,rgba(26,18,14,0) 63%)}}
-  @media(max-width:899px){.hero__bg{background-size:cover;background-position:62% 20%}.hero__scrim{background:linear-gradient(180deg,rgba(26,18,14,.35) 0%,rgba(26,18,14,.82) 45%,rgba(26,18,14,.95) 100%)}}
-  .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:640px;padding-block:96px}
-  @media(min-width:900px){.hero__inner{min-height:calc(100svh - 72px);padding-block:80px}}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(26,18,14,0) 0,rgba(26,18,14,0) calc(66.7vw*.6),rgba(26,18,14,.75) calc(66.7vw*.8),#1a120e calc(66.7vw*.97),#1a120e 100%)}
+  .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-top:calc(66.7vw*.74);padding-bottom:56px}
+  @media(min-width:900px){.hero__inner{padding-bottom:80px}.hero h1{max-width:24ch;font-size:clamp(2.6rem,4.6vw,4.4rem)}}
+  @media(max-width:899px){.hero__bg{background-size:150% auto}.hero__scrim{background:linear-gradient(180deg,rgba(26,18,14,0) 0,rgba(26,18,14,0) 62vw,rgba(26,18,14,.75) 82vw,#1a120e 98vw,#1a120e 100%)}.hero__inner{padding-top:84vw}}
   .hero .eyebrow{color:#fff}
   .hero .eyebrow::before{background:var(--terra)}
   .hero h1{color:#fff;margin:26px 0 0;max-width:17ch;text-shadow:0 2px 30px rgba(0,0,0,.35)}
