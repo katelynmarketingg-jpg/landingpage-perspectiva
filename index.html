@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/hero-equipe.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/equipe-duo.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
@@ -107,13 +107,43 @@
   .hero{position:relative;color:var(--tx-onink);isolation:isolate;overflow:hidden}
   /* EDITAR: para foto de fundo, troque os gradientes de .hero__bg por:
      background:url('images/hero.jpg') center/cover no-repeat;  (o .hero__scrim garante a legibilidade) */
-  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero-equipe.webp') 50% 0/100% auto no-repeat;background-color:#1a120e}
-  .hero__bg::after{content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
-  .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(26,18,14,0) 0,rgba(26,18,14,0) calc(66.7vw*.6),rgba(26,18,14,.75) calc(66.7vw*.8),#1a120e calc(66.7vw*.97),#1a120e 100%)}
-  .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:flex-end;padding-top:calc(66.7vw*.74);padding-bottom:56px}
-  @media(min-width:900px){.hero__inner{padding-bottom:80px}.hero h1{max-width:24ch;font-size:clamp(2.6rem,4.6vw,4.4rem)}}
-  @media(max-width:899px){.hero__bg{background-size:150% auto}.hero__scrim{background:linear-gradient(180deg,rgba(26,18,14,0) 0,rgba(26,18,14,0) 62vw,rgba(26,18,14,.75) 82vw,#1a120e 98vw,#1a120e 100%)}.hero__inner{padding-top:84vw}}
+  /* Topo + Equipe: uma foto vertical contínua dividida em dois blocos (sem corte). --pw = largura da foto, --ph = altura (2:3) */
+  .duo{--pw:min(100vw,1600px);--ph:calc(var(--pw)*1.5);--cut:.46;background:#dcdad8;position:relative}
+  .duo__img{background:url('assets/equipe-duo.webp') no-repeat;background-size:var(--pw) auto}
+  .duo--a .duo__img{background-position:50% 0}
+  .duo--b .duo__img{background-position:50% 100%}
+  .duo__txt{position:relative}
+  @media(min-width:900px){
+    .duo--a{height:calc(var(--ph)*var(--cut))}
+    .duo--b{height:calc(var(--ph)*(1 - var(--cut)))}
+    .duo__img{position:absolute;inset:0}
+    .duo--a .duo__txt{display:flex;flex-direction:column;align-items:flex-end;text-align:right;padding-top:calc(var(--ph)*.035)}
+    .duo--a .duo__txt .hero__actions{justify-content:flex-end}
+    .duo--b .duo__img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,18,14,.9) 0%,rgba(26,18,14,.78) 32%,rgba(26,18,14,0) 54%);-webkit-mask-image:linear-gradient(180deg,transparent 0,#000 26%);mask-image:linear-gradient(180deg,transparent 0,#000 26%)}
+    .duo--b .duo__txt{height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:calc(var(--ph)*.06);max-width:var(--maxw)}
+    .duo--b .crew__body{max-width:460px}
+  }
+  @media(max-width:899px){
+    .duo--a{display:flex;flex-direction:column}
+    .duo--a .duo__img{height:calc(var(--ph)*var(--cut));order:2}
+    .duo--b .duo__img{height:calc(var(--ph)*(1 - var(--cut)))}
+    .duo--a .duo__txt{padding-block:48px 28px}
+    .duo--b{background:var(--ink)}
+    .duo--b .duo__txt{padding-block:40px 64px}
+  }
+  .hero.duo{color:var(--ink)}
+  .duo--a .eyebrow{color:var(--terra)!important}
+  .duo--a h1{color:var(--ink)!important;text-shadow:none!important;max-width:15ch!important}
+  .duo--a .hero__sub{color:var(--tx-soft)!important}
+  .duo--a .btn--ghost-ink{color:var(--ink);border-color:rgba(37,36,34,.35)}
+  .duo--b{color:var(--tx-onink)}
+  .duo--b .h2,.duo--b .crew__list strong{color:var(--tx-onink)}
+  .duo--b .lead,.duo--b .crew__list span{color:var(--tx-onink-soft)}
+  .duo--b .crew__list li{border-color:var(--line-ink)}
+  .duo--b .h2{margin-top:20px}
+  .duo--b .lead{margin-top:22px}
+  .duo--b .crew__list{margin-top:28px;border-color:var(--line-ink)}
+  @media(min-width:1600px){.duo::before,.duo::after{content:"";position:absolute;top:0;bottom:0;width:calc((100vw - var(--pw))/2 + 120px);z-index:1;pointer-events:none}.duo::before{left:0;background:linear-gradient(90deg,#dcdad8 calc(100% - 120px),rgba(220,218,216,0))}.duo::after{right:0;background:linear-gradient(270deg,#dcdad8 calc(100% - 120px),rgba(220,218,216,0))}.duo__txt{z-index:2}.duo--b::before{display:none}.duo--b .duo__img::after{z-index:1}}
   .hero .eyebrow{color:#fff}
   .hero .eyebrow::before{background:var(--terra)}
   .hero h1{color:#fff;margin:26px 0 0;max-width:17ch;text-shadow:0 2px 30px rgba(0,0,0,.35)}
@@ -334,7 +364,6 @@
 
   /* ===== animações extra ===== */
   @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
-  .hero__bg{animation:kenburns 22s ease-out both;transform-origin:60% 55%}
   header.nav{transition:box-shadow .3s var(--ease)}
   header.nav.scrolled{box-shadow:0 12px 30px -24px rgba(37,36,34,.55)}
   html.js .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -419,10 +448,9 @@
 </header>
 
 <!-- 01 · HERO -->
-<section class="hero" id="topo">
-  <div class="hero__bg" aria-hidden="true"></div>
-  <div class="hero__scrim" aria-hidden="true"></div>
-  <div class="wrap hero__inner" id="conteudo">
+<section class="hero duo duo--a" id="topo">
+  <div class="duo__img" role="img" aria-label="Katelyn Santos, Bruno Oliveira e Rafaela Almeida, da Perspectiva"></div>
+  <div class="wrap hero__inner duo__txt" id="conteudo">
     <span class="eyebrow">Perspectiva — Agência de Marketing</span>
     <h1 class="display">A forma como você é visto muda a forma como é <em>escolhido</em>.</h1>
     <p class="hero__sub">Construímos estratégias que tornam perceptível aquilo que já diferencia a sua marca.</p>
@@ -432,6 +460,22 @@
       </a>
       <a class="btn btn--ghost-ink" href="#solucoes">Conheça as soluções</a>
     </div>
+  </div>
+</section>
+<section class="duo duo--b" id="equipe">
+  <div class="duo__img" aria-hidden="true"></div>
+  <div class="wrap duo__txt">
+      <div class="crew__body">
+        <span class="eyebrow">Família Perspectiva</span>
+        <h2 class="h2">Antes de existir uma agência, existiram pessoas que enxergavam diferente.</h2>
+        <p class="lead">A Perspectiva é feita por pessoas curiosas o suficiente para perguntar antes de responder, inquietas o suficiente para não aceitar o óbvio e próximas o suficiente para entender que nenhuma marca cabe inteira dentro de um briefing.</p>
+        <ul class="crew__list">
+          <li><strong>Katelyn Santos</strong><span>Fundadora</span></li>
+          <li><strong>Bruno Oliveira</strong><span>Co-fundador</span></li>
+          <li><strong>Rafaela Almeida</strong><span>Colaboradora</span></li>
+        </ul>
+        <p class="lead">Estratégia, criação, audiovisual, design e comunicação se encontram por aqui com um mesmo propósito: mostrar ao mundo aquilo que nossos clientes já têm de único.</p>
+      </div>
   </div>
 </section>
 
@@ -695,25 +739,7 @@
 </section>
 
 <!-- 09 · QUEM FAZ -->
-<section class="sec team" id="equipe">
-  <div class="wrap">
-    <div class="crew reveal">
-      <figure class="crew__media"><img src="assets/team.webp" alt="Katelyn Santos, Bruno Oliveira e Rafaela Almeida, da Perspectiva" loading="lazy" width="543" height="724"></figure>
-      <div class="crew__body">
-        <span class="eyebrow">Família Perspectiva</span>
-        <h2 class="h2">Antes de existir uma agência, existiram pessoas que enxergavam diferente.</h2>
-        <p class="lead">A Perspectiva é feita por pessoas curiosas o suficiente para perguntar antes de responder, inquietas o suficiente para não aceitar o óbvio e próximas o suficiente para entender que nenhuma marca cabe inteira dentro de um briefing.</p>
-        <ul class="crew__list">
-          <li><strong>Katelyn Santos</strong><span>Fundadora</span></li>
-          <li><strong>Bruno Oliveira</strong><span>Co-fundador</span></li>
-          <li><strong>Rafaela Almeida</strong><span>Colaboradora</span></li>
-        </ul>
-        <p class="lead">Estratégia, criação, audiovisual, design e comunicação se encontram por aqui com um mesmo propósito: mostrar ao mundo aquilo que nossos clientes já têm de único.</p>
-      </div>
-    </div>
-    <!-- EDITAR: quando chegarem as fotos individuais, dá para voltar aos cards .leader (ver histórico do git) -->
-  </div>
-</section>
+
 
 <!-- 10 · CTA / ENCERRAMENTO -->
 <section class="sec cta" id="contato">
