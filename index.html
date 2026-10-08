@@ -107,13 +107,13 @@
   .hero{position:relative;color:var(--tx-onink);isolation:isolate;overflow:hidden}
   /* EDITAR: para foto de fundo, troque os gradientes de .hero__bg por:
      background:url('images/hero.jpg') center/cover no-repeat;  (o .hero__scrim garante a legibilidade) */
-  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/equipe-horizontal.webp') 50% 40%/cover no-repeat;background-color:#241a14}
-  .hero__bg::after{content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
+  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/equipe-horizontal.webp') 50.3% 32%/max(112%,calc((100svh - 72px)*1.62)) auto no-repeat;background-color:#241a14}
   .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(26,18,14,.72) 0%,rgba(26,18,14,.38) 32%,rgba(26,18,14,0) 58%),linear-gradient(90deg,rgba(26,18,14,.35) 0%,rgba(26,18,14,.12) 45%,rgba(26,18,14,0) 70%)}
   .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:640px;padding-block:96px 48px}
   @media(min-width:900px){.hero__inner{min-height:calc(100svh - 72px);padding-block:80px 56px}}
   .hero h1.display{font-size:clamp(2rem,3.6vw,3.1rem);max-width:22ch}
+  .hero h1.display .br-pc{display:none}
+  @media(min-width:900px){.hero__inner{align-items:center;text-align:center}.hero h1.display{max-width:none;white-space:nowrap;font-size:clamp(2rem,2.9vw,2.9rem)}.hero h1.display .br-pc{display:inline}.hero .hero__sub{margin-inline:auto}.hero .hero__actions{justify-content:center}.hero__scrim{background:linear-gradient(0deg,rgba(26,18,14,.78) 0%,rgba(26,18,14,.5) 30%,rgba(26,18,14,0) 52%)}}
   @media(max-width:899px){.hero__inner{min-height:calc(100svh - 72px);padding-top:56vw}.hero__bg{background-size:auto 62%;background-position:50% 0;background-color:#1a120e}.hero__scrim{background:linear-gradient(180deg,rgba(26,18,14,0) 0,rgba(26,18,14,0) 36%,rgba(26,18,14,.92) 61%,#1a120e 100%)}}
   .hero .hero__sub{margin-top:16px;font-size:clamp(.98rem,1.2vw,1.1rem)}
   .hero .hero__actions{margin-top:26px}
@@ -337,7 +337,6 @@
 
   /* ===== animações extra ===== */
   @keyframes kenburns{from{transform:scale(1.12)}to{transform:scale(1)}}
-  .hero__bg{animation:kenburns 22s ease-out both;transform-origin:60% 55%}
   header.nav{transition:box-shadow .3s var(--ease)}
   header.nav.scrolled{box-shadow:0 12px 30px -24px rgba(37,36,34,.55)}
   html.js .stagger>*{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -427,7 +426,7 @@
   <div class="hero__scrim" aria-hidden="true"></div>
   <div class="wrap hero__inner" id="conteudo">
     <span class="eyebrow">Perspectiva — Agência de Marketing</span>
-    <h1 class="display">A forma como você é visto muda a forma como é <em>escolhido</em>.</h1>
+    <h1 class="display">A forma como você é visto<br class="br-pc"> muda a forma como é <em>escolhido</em>.</h1>
     <p class="hero__sub">Construímos estratégias que tornam perceptível aquilo que já diferencia a sua marca.</p>
     <div class="hero__actions">
       <a class="btn btn--terra" href="https://wa.me/5551997736606" target="_blank" rel="noopener">Ouse ver diferente
