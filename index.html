@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/hero.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero-equipe.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
@@ -107,10 +107,12 @@
   .hero{position:relative;color:var(--tx-onink);isolation:isolate;overflow:hidden}
   /* EDITAR: para foto de fundo, troque os gradientes de .hero__bg por:
      background:url('images/hero.jpg') center/cover no-repeat;  (o .hero__scrim garante a legibilidade) */
-  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero.webp') 62% 82%/cover no-repeat;background-color:#241a14}
+  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero-equipe.webp') right -22vw top/auto 100% no-repeat;background-color:#241a14}
   .hero__bg::after{content:"";position:absolute;inset:0;opacity:.16;mix-blend-mode:overlay;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E")}
-  .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,18,14,.94) 0%,rgba(26,18,14,.8) 34%,rgba(26,18,14,.5) 64%,rgba(26,18,14,.24) 100%)}
+  .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(26,18,14,1) 0%,rgba(26,18,14,1) 40%,rgba(26,18,14,.6) 52%,rgba(26,18,14,0) 66%,rgba(26,18,14,0) 100%)}
+  @media(min-width:1600px){.hero__scrim{background:linear-gradient(90deg,rgba(26,18,14,1) 0%,rgba(26,18,14,1) 47%,rgba(26,18,14,.55) 55%,rgba(26,18,14,0) 63%)}}
+  @media(max-width:899px){.hero__bg{background-size:cover;background-position:62% 20%}.hero__scrim{background:linear-gradient(180deg,rgba(26,18,14,.35) 0%,rgba(26,18,14,.82) 45%,rgba(26,18,14,.95) 100%)}}
   .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:center;min-height:640px;padding-block:96px}
   @media(min-width:900px){.hero__inner{min-height:calc(100svh - 72px);padding-block:80px}}
   .hero .eyebrow{color:#fff}
