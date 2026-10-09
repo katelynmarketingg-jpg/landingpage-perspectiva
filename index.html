@@ -322,6 +322,11 @@
   .cta .tagline{color:var(--terra);margin-bottom:22px;display:inline-block}
   .cta h2{color:var(--cream);font-size:clamp(2rem,4.4vw,3.3rem);letter-spacing:-.03em;max-width:22ch;margin:0 auto;font-weight:700;line-height:1.1}
   .cta h2 em{font-style:normal;color:var(--terra)}
+  .cta h2.cta__split{max-width:none}
+  .cta__l,.cta__r{display:block;max-width:13ch}
+  .cta__l{text-align:left;margin-right:auto}
+  .cta__r{text-align:right;margin-left:auto;margin-top:.35em}
+  @media(max-width:899px){.cta__l,.cta__r{max-width:none}}
   .cta__sub{margin:24px auto 0;max-width:42ch;color:rgba(255,253,241,.82);font-size:1.08rem}
   .cta__actions{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:40px}
 
@@ -766,7 +771,7 @@
   <div class="cta__glow" aria-hidden="true"></div>
   <div class="wrap">
     <span class="tagline">Ouse ver diferente</span>
-    <h2>Talvez sua marca não precise mudar. Talvez só precise ser vista por <em>outra perspectiva</em>.</h2>
+    <h2 class="cta__split"><span class="cta__l">Talvez sua marca não precise mudar.</span> <span class="cta__r">Talvez só precise ser vista por <em>outra perspectiva</em>.</span></h2>
     <div class="cta__actions">
       <a class="btn btn--terra" href="https://wa.me/5551997736606" target="_blank" rel="noopener">Comece agora
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
