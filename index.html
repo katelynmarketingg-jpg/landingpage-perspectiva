@@ -8,7 +8,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
-<link rel="preload" as="image" href="assets/hero-movimento.webp" fetchpriority="high">
+<link rel="preload" as="image" href="assets/hero.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
@@ -107,7 +107,7 @@
   .hero{position:relative;color:var(--tx-onink);isolation:isolate;overflow:hidden}
   /* EDITAR: para foto de fundo, troque os gradientes de .hero__bg por:
      background:url('images/hero.jpg') center/cover no-repeat;  (o .hero__scrim garante a legibilidade) */
-  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero-movimento.webp') 50% 32%/max(112%,calc((100svh - 72px)*2.1)) auto no-repeat;background-color:#241a14}
+  .hero__bg{position:absolute;inset:0;z-index:-2;background:url('assets/hero.webp') 50.3% 46%/max(112%,calc((100svh - 72px)*1.62)) auto no-repeat;background-color:#241a14}
   .hero__scrim{position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(26,18,14,.72) 0%,rgba(26,18,14,.38) 32%,rgba(26,18,14,0) 58%),linear-gradient(90deg,rgba(26,18,14,.35) 0%,rgba(26,18,14,.12) 45%,rgba(26,18,14,0) 70%)}
   .hero__inner{position:relative;display:flex;flex-direction:column;justify-content:flex-end;min-height:640px;padding-block:96px 48px}
   @media(min-width:900px){.hero__inner{min-height:calc(100svh - 72px);padding-block:80px 56px}}
@@ -315,7 +315,8 @@
   .leader__t strong{color:var(--ink);font-weight:600}
 
   /* ===== CTA ===== */
-  .cta{background:var(--ink);color:var(--cream);text-align:center;position:relative;overflow:hidden}
+  .cta{background:var(--ink) url('assets/cta.webp') 50% 40%/cover no-repeat;color:var(--cream);text-align:center;position:relative;overflow:hidden;isolation:isolate}
+  .cta::before{content:"";position:absolute;inset:0;z-index:0;background:rgba(26,18,14,.62)}
   .cta__glow{position:absolute;inset:0;z-index:0;background:radial-gradient(70% 120% at 50% 0%,rgba(235,94,40,.28),transparent 60%)}
   .cta .wrap{position:relative;z-index:1}
   .cta .tagline{color:var(--terra);margin-bottom:22px;display:inline-block}
@@ -396,7 +397,7 @@
   .hero__inner>*:nth-child(4){animation-delay:.24s}
   @media(prefers-reduced-motion:reduce){.hero__inner>*{animation:none}}
   /* Faixa com foto entre Método e O que fazemos */
-  .band{position:relative;min-height:clamp(380px,52vw,620px);display:flex;align-items:flex-end;background:#2a211c url('assets/equipe-horizontal.webp') 50% 38%/cover no-repeat;color:#fff;isolation:isolate}
+  .band{position:relative;min-height:clamp(380px,52vw,620px);display:flex;align-items:flex-end;background:#2a211c url('assets/faixa.webp') 50% 45%/cover no-repeat;color:#fff;isolation:isolate}
   .band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(26,18,14,.72) 0%,rgba(26,18,14,.25) 38%,rgba(26,18,14,0) 60%)}
   .band .wrap{width:100%;padding-block:0 clamp(32px,4vw,56px)}
   .band__t{font-family:var(--sans);font-weight:700;font-size:clamp(1.5rem,2.6vw,2.3rem);letter-spacing:-.02em;line-height:1.15;max-width:22ch}
@@ -714,7 +715,7 @@
 <section class="sec team" id="equipe">
   <div class="wrap">
     <div class="crew reveal">
-      <figure class="crew__media"><img src="assets/equipe-vertical.webp" alt="Katelyn Santos, Bruno Oliveira e Rafaela Almeida, da Perspectiva" loading="lazy" width="1333" height="2000"></figure>
+      <figure class="crew__media"><img src="assets/equipe-vertical.webp" alt="Katelyn Santos, Bruno Oliveira e Rafaela Almeida, da Perspectiva" loading="lazy" width="1600" height="2400"></figure>
       <div class="crew__body">
         <span class="eyebrow">Família Perspectiva</span>
         <h2 class="h2">Antes de existir uma agência, existiram pessoas que enxergavam diferente.</h2>
@@ -729,7 +730,7 @@
     </div>
     <div class="team__lead stagger">
       <article class="leader">
-        <figure class="leader__ph"><img src="assets/team-katelyn.webp" alt="Katelyn Santos" loading="lazy" width="1333" height="2000" style="object-position:50% 38%;--z:1.45;--o:54% 32%"></figure>
+        <figure class="leader__ph"><img src="assets/team-katelyn.webp" alt="Katelyn Santos" loading="lazy" width="1365" height="2048" style="object-position:50% 30%"></figure>
         <div class="leader__b">
           <div class="leader__role">Fundadora</div>
           <div class="leader__name">Katelyn Santos</div>
