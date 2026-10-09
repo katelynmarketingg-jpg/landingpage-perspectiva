@@ -395,6 +395,12 @@
   .hero__inner>*:nth-child(3){animation-delay:.16s}
   .hero__inner>*:nth-child(4){animation-delay:.24s}
   @media(prefers-reduced-motion:reduce){.hero__inner>*{animation:none}}
+  /* Faixa com foto entre Método e O que fazemos */
+  .band{position:relative;min-height:clamp(380px,52vw,620px);display:flex;align-items:flex-end;background:#2a211c url('assets/equipe-horizontal.webp') 50% 38%/cover no-repeat;color:#fff;isolation:isolate}
+  .band::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(26,18,14,.72) 0%,rgba(26,18,14,.25) 38%,rgba(26,18,14,0) 60%)}
+  .band .wrap{width:100%;padding-block:0 clamp(32px,4vw,56px)}
+  .band__t{font-family:var(--sans);font-weight:700;font-size:clamp(1.5rem,2.6vw,2.3rem);letter-spacing:-.02em;line-height:1.15;max-width:22ch}
+  .band__t em{font-style:normal;color:var(--terra)}
 </style>
 
 <!-- HEADER -->
@@ -495,6 +501,13 @@
         <p>Acompanhamos o movimento da marca, refinamos estratégias e fortalecemos sua presença para que, com o tempo, ela não seja apenas vista — seja reconhecida e lembrada.</p>
       </article>
     </div>
+  </div>
+</section>
+
+<!-- 03b · FAIXA COM FOTO -->
+<section class="band" aria-label="Equipe da Perspectiva">
+  <div class="wrap">
+    <p class="band__t reveal">Gente de verdade por trás de cada <em>estratégia</em>.</p>
   </div>
 </section>
 
